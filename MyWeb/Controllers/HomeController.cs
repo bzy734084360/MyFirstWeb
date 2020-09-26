@@ -11,7 +11,29 @@ namespace MyWeb.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            //Employee
             return View();
+        }
+
+        /// <summary>
+        /// 测试禁止放问控制器方法特性
+        /// </summary>
+        [NonAction]
+        public void TestNonAction()
+        {
+
+        }
+
+        public ActionResult MoreView()
+        {
+            if (string.IsNullOrEmpty(Request["ID"]))
+            {
+                return View("MyView");
+            }
+            else
+            {
+                return View("YourView");
+            }
         }
     }
 }
