@@ -11,6 +11,6 @@ namespace MyWeb.Model
 
         public string LastName { get; set; }
 
-        public int Salay { get; set; }
+        public int Salary { get; set; }
     }
 }

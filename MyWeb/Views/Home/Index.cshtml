@@ -1,5 +1,8 @@
-﻿@{
+﻿@using MyWeb.Model
+@{
     string a = string.Empty;
+    Employee emp = (Employee)ViewData["Employee"];
+    Employee employee = ViewBag.EmployeeBag;
 }
 <!DOCTYPE html>
 <div>
@@ -7,6 +10,14 @@
     <ul>
         <li>测试</li>
     </ul>
+    <h1>ViewData</h1>
+    <p>@emp.FistName</p>
+    <p>@emp.LastName</p>
+    <p>@emp.Salary</p>
+    <h1>ViewBag</h1>
+    <p>@employee.FistName</p>
+    <p>@employee.LastName</p>
+    <p>@employee.Salary</p>
 </div>
 <script>
 </script>
