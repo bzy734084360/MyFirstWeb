@@ -24,7 +24,7 @@ namespace MyWeb.Controllers
         }
 
         /// <summary>
-        /// 测试禁止放问控制器方法特性
+        /// 测试禁止访问控制器方法特性
         /// </summary>
         [NonAction]
         public void TestNonAction()
