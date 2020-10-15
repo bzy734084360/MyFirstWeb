@@ -4,11 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>我的Web首页</title>
+    <script src="~/Content/layui/layui.all.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
     <link href="~/Content/layui/css/layui.css" rel="stylesheet" />
 </head>
 <body>
     <div>
         @RenderBody()
+    </div>
+    <div>
+        <button onclick="ShowMsg()">展示母版页弹窗</button>
     </div>
     <!-- 你的HTML代码 -->
     <script src="~/Content/layui/layui.js"></script>
@@ -16,9 +21,11 @@
         //一般直接写在一个js文件中
         layui.use(['layer', 'form'], function () {
             var layer = layui.layer
-                , form = layui.form;
-            layer.msg('我是母版页');
+            , form = layui.form;
         });
+        function ShowMsg() {
+            layer.msg("母版页提示框", { icon: 1, time: 1500 });
+        }
     </script>
 </body>
 </html>

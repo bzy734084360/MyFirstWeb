@@ -198,6 +198,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BusinessLayer\EmployeeBusinessLayer.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LayuiController.cs" />
     <Compile Include="DataAccessLayer\SalesERPDAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -340,6 +341,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\mymod.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -360,6 +362,8 @@
     <Content Include="Views\Home\MyView.cshtml" />
     <Content Include="Views\Home\YourView.cshtml" />
     <Content Include="Views\Home\ModelView.cshtml" />
+    <Content Include="Views\Layui\Home.cshtml" />
+    <Content Include="Views\Shared\Layui\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

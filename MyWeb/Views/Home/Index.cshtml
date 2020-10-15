@@ -5,6 +5,7 @@
     Employee employee = ViewBag.EmployeeBag;
 }
 <!DOCTYPE html>
+
 <div>
     @a
     <ul>
@@ -19,5 +20,11 @@
     <p>@employee.LastName</p>
     <p>@employee.Salary</p>
 </div>
+<div>
+    <button onclick="GoLayuiHome()">跳转Layui页面</button>
+</div>
 <script>
+    function GoLayuiHome() {
+        window.location.href = "layui/Home";
+    }
 </script>
