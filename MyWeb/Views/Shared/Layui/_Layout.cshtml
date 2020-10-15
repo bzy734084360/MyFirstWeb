@@ -25,7 +25,7 @@
 
     <script>
         /**
-        扩展一个test模块
+        扩展一个test模块 /Scripts/mymod.js
         **/
         layui.extend({
             mymod: '{/}/Scripts/mymod' // {/}的意思即代表采用自有路径，即不跟随 base 路径
@@ -34,13 +34,14 @@
             var layer = layui.layer
             , form = layui.form
             , mymod = layui.mymod;
-            mymod.hello('拓展Layui模块!'); //弹出 Hello World!
+            mymod.hello('拓展Layui模块!');
         });
         function ShowMsg() {
             layer.msg("母版页提示框", { icon: 1, time: 1500 });
         }
         function ShowMymod() {
-            mymod.hello('World!'); //弹出 Hello World!
+            //全模块加载无法使用： 自定义模块
+            mymod.hello('拓展Layui模块!');
         }
 
     </script>
