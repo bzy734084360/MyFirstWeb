@@ -13,5 +13,13 @@ namespace MyWeb.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// Layui栅格
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult LayuiGrid()
+        {
+            return View();
+        }
     }
 }
