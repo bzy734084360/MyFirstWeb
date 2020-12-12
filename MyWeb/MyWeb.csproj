@@ -318,6 +318,7 @@
     <Content Include="Content\layui\lay\modules\tree.js" />
     <Content Include="Content\layui\lay\modules\upload.js" />
     <Content Include="Content\layui\lay\modules\util.js" />
+    <Content Include="Content\layui_exts\excel.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -365,6 +366,7 @@
     <Content Include="Views\Layui\Home.cshtml" />
     <Content Include="Views\Shared\Layui\_Layout.cshtml" />
     <Content Include="Views\Layui\LayuiGrid.cshtml" />
+    <Content Include="Views\Layui\LayuiDatatTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

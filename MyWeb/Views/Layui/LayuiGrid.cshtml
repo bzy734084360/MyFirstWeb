@@ -1,17 +1,54 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+    Layout = "~/Views/Shared/Layui/_Layout.cshtml";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>LayuiGrid</title>
-</head>
-<body>
-    <div> 
+<div class="layui-tab">
+    <ul class="layui-tab-title">
+        <li class="layui-this">基础说明</li>
+        <li>栅格布局</li>
+        <li>标题三</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <div class="layui-btn-fluid">layui-btn-fluid</div>
+            <div class="layui-text">
+                <ul>
+                    <li>layui-text</li>
+                </ul>
+            </div>
+            <div class="layui-icon-404">
+                layui-icon-404
+            </div>
+        </div>
+        <div class="layui-tab-item">
+            <div class="layui-container ">
+                <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                    <legend>始终等比例水平排列</legend>
+                </fieldset>
+                <div class="layui-row layui-col-space10">
+                    <div class="layui-col-xs6" style="background-color:#63BA79">xs占6等分</div>
+                    <div class="layui-col-xs6" style="background-color:#79C48C">xs占6等分</div>
+                </div>
+                <div class="layui-row">
+                    <div class="layui-col-xs3" style="background-color:#63BA79">xs占3等分</div>
+                    <div class="layui-col-xs3" style="background-color:#79C48C">xs占3等分</div>
+                    <div class="layui-col-xs3" style="background-color:#63BA79">xs占3等分</div>
+                    <div class="layui-col-xs3" style="background-color:#79C48C">xs占3等分</div>
+                </div>
+            </div>
+            <div class="layui-fluid">
+                <div class="layui-row layui-col-space10">
+                    <div class="layui-col-xs6" style="background-color:#63BA79">xs占6等分</div>
+                    <div class="layui-col-xs6" style="background-color:#79C48C">xs占6等分</div>
+                </div>
+                <div class="layui-row">
+                    <div class="layui-col-xs3" style="background-color:#63BA79">xs占3等分</div>
+                    <div class="layui-col-xs3" style="background-color:#79C48C">xs占3等分</div>
+                    <div class="layui-col-xs3" style="background-color:#63BA79">xs占3等分</div>
+                    <div class="layui-col-xs3" style="background-color:#79C48C">xs占3等分</div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-tab-item">内容3</div>
     </div>
-</body>
-</html>
+</div>
+
