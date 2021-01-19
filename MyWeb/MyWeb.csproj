@@ -371,6 +371,7 @@
     <Content Include="Views\Layui\LayuiGrid.cshtml" />
     <Content Include="Views\Layui\LayuiDatatTable.cshtml" />
     <Content Include="Views\Vue\Index.cshtml" />
+    <Content Include="Views\Shared\_VueLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

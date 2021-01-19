@@ -6,6 +6,9 @@ using System.Web.Mvc;
 
 namespace MyWeb.Controllers
 {
+    /// <summary>
+    /// Vue Study
+    /// </summary>
     public class VueController : Controller
     {
         // GET: Vue
