@@ -320,6 +320,8 @@
     <Content Include="Content\layui\lay\modules\upload.js" />
     <Content Include="Content\layui\lay\modules\util.js" />
     <Content Include="Content\layui_exts\excel.min.js" />
+    <Content Include="Content\vue\vue.js" />
+    <Content Include="Content\vue\vue.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
