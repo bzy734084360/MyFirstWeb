@@ -11,8 +11,19 @@ namespace MyWeb.Controllers
     /// </summary>
     public class VueController : Controller
     {
-        // GET: Vue
+        /// <summary>
+        /// Vue介绍
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
+        {
+            return View();
+        }
+        /// <summary>
+        /// Vue实例
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult VueExamples()
         {
             return View();
         }
