@@ -1,30 +1,16 @@
-﻿@using MyWeb.Model
-@{
-    string a = string.Empty;
-    Employee emp = (Employee)ViewData["Employee"];
-    Employee employee = ViewBag.EmployeeBag;
+﻿@{
+    Layout = "~/Views/Shared/Layui/_Layout.cshtml";
 }
 <!DOCTYPE html>
-
-<div>
-    @a
-    <ul>
-        <li>测试</li>
-    </ul>
-    <h1>ViewData</h1>
-    <p>@emp.FistName</p>
-    <p>@emp.LastName</p>
-    <p>@emp.Salary</p>
-    <h1>ViewBag</h1>
-    <p>@employee.FistName</p>
-    <p>@employee.LastName</p>
-    <p>@employee.Salary</p>
-</div>
 <div>
     <button onclick="GoLayuiHome()">跳转Layui页面</button>
+    <button onclick="GoVueHome()">跳转Vue页面</button>
 </div>
 <script>
     function GoLayuiHome() {
         window.location.href = "layui/Home";
+    }
+    function GoVueHome() {
+        window.location.href = "Vue/Index";
     }
 </script>
