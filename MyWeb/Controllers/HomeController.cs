@@ -14,12 +14,12 @@ namespace MyWeb.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            Employee emp = new Employee();
-            emp.FistName = "fish";
-            emp.LastName = "yu";
-            emp.Salary = 2000;
-            ViewData["Employee"] = emp;
-            ViewBag.EmployeeBag = emp;
+            //Employee emp = new Employee();
+            //emp.FistName = "fish";
+            //emp.LastName = "yu";
+            //emp.Salary = 2000;
+            //ViewData["Employee"] = emp;
+            //ViewBag.EmployeeBag = emp;
             return View();
         }
 
