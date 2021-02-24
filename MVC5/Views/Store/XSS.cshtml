@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+    ViewBag.Username = "\x3cscript\x3e alert(\x27pwnd\x27) \x3c/script\x3e";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>XSS</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+    <div>
+    </div>
+    <span id="message"></span>
+    <div>
+        <span>
+            <text>
+                第一行
+                第二行
+                第三行
+            </text>
+        </span>
+        <span>
+            第一行
+            第二行
+            第三行
+        </span>
+    </div>
+</body>
+</html>
+<script>
+    $(function () {
+        @*var message = 'Hello @Ajax.JavaScriptStringEncode(ViewBag.Username)';*@
+        var message = 'Hello @(ViewBag.Username)';
+        $("#message").html(message).show('slow');
+    })
+</script>
