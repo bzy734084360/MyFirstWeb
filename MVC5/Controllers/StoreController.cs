@@ -29,7 +29,8 @@ namespace MVC5.Controllers
 
         public ActionResult XSS()
         {
-            return View();
+            return PartialView();
+            //return View();
         }
 
     }
