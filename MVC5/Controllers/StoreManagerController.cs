@@ -95,6 +95,8 @@ namespace MVC5.Controllers
             }
             ViewBag.ArtistId = new SelectList(db.Artists, "ArtistId", "Name", album.ArtistId);
             ViewBag.GenreId = new SelectList(db.Genres, "GenreId", "Name", album.GenreId);
+            //UpdateModel(album);
+            //TryUpdateModel(album);
             return View(album);
         }
 
