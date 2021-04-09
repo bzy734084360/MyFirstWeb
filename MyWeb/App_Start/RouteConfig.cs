@@ -16,7 +16,7 @@ namespace MyWeb
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "MVC", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Layui", action = "Home", id = UrlParameter.Optional }
             );
         }
     }
