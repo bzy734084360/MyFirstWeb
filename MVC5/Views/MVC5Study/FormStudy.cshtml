@@ -1,0 +1,41 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FormStudy</title>
+    <style>
+        .mvcstudy-div1 {
+            height: 300px;
+            width: 200px;
+            border: dotted;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <label>5.1搜索表单</label>
+    <div class="mvcstudy-div1">
+        <form action="/MVC5Study/Search" method="get">
+            <input type="text" name="q" />
+            <input type="submit" value="Search" />
+        </form>
+    </div>
+    <label>5.1搜索表单(Html辅助方法)</label>
+    <div class="mvcstudy-div1">
+        @using (Html.BeginForm("Search", "MVC5Study", FormMethod.Get))
+        {
+            @Html.ValidationSummary(excludePropertyErrors: true)
+            <input type="text" name="q" />
+            <input type="submit" value="Search" />
+        }
+    </div>
+    <label>@Url.Content("/MVC5Study/Edit?id=1")</label>
+    <br />
+    <button onclick="/MVC5Study/Edit?id=1">编辑数据</button>
+    <a href="/MVC5Study/Edit?id=1">aaa</a>
+</body>
+</html>

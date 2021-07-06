@@ -1,0 +1,44 @@
+﻿@model MVC5.Models.OrderType
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.Id)
+                <div class="form-group">
+                    @Html.ValidationSummary(true)
+                    @Html.LabelFor(model => model.Type, "类型标识")
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Type)
+                        @Html.ValidationMessageFor(model => model.Type)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.ValidationSummary(true)
+                    @Html.LabelFor(model => model.TypeName, "类型名称")
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TypeName)
+                        @Html.ValidationMessageFor(model => model.TypeName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("TypeName")
+                    @Html.Label("Type")
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>

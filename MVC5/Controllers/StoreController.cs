@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC5.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,29 +10,28 @@ namespace MVC5.Controllers
     public class StoreController : Controller
     {
         // GET: Store
-        public string Index()
+        public ActionResult Index()
         {
-            return "Store.Index()";
+            var ablums = GetAlbums();
+            return View(ablums);
         }
-        //genre 响应URL传参
-        public string Browse(string genre)
+        [Authorize]
+        public ActionResult Buy(int id)
         {
-            //防止JS或html 标记注入
-            string message = HttpUtility.HtmlEncode($"Store.Browse(),Genre={genre}");
-            return message;
-        }
-
-        public string Details(int id)
-        {
-            string message = $"Store.Details(),ID={id}";
-            return message;
+            var album = GetAlbums().Single(a => a.AlbumId == id);
+            return View(album);
         }
 
-        public ActionResult XSS()
+        private static List<Album> GetAlbums()
         {
-            return PartialView();
-            //return View();
+            var abums = new List<Album>
+            {
+                new Album{ AlbumId=1,Title="第一个物品",Price=8.99M},
+                new Album{ AlbumId=2,Title="第二个物品",Price=9.99M},
+                new Album{ AlbumId=3,Title="第三个物品",Price=10.99M},
+                new Album{ AlbumId=4,Title="第四个物品",Price=11.99M},
+            };
+            return abums;
         }
-
     }
 }
