@@ -51,3 +51,20 @@
     }
 
 </table>
+<div class="col-md-4" id="dailydeal">
+    @Ajax.ActionLink("点击",
+   "DailyDeal",
+   null,
+   new AjaxOptions
+   {
+   UpdateTargetId = "dailydeal",
+   InsertionMode = InsertionMode.Replace,
+   HttpMethod = "GET"
+   },
+   new { @class = "btn btn-primary" }
+)
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.js")
+}

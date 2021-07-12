@@ -21,6 +21,11 @@ namespace MVC5.Controllers
             var album = GetAlbums().Single(a => a.AlbumId == id);
             return View(album);
         }
+        public ActionResult DailyDeal()
+        {
+            return PartialView("_DailyDeal", new Album { AlbumId = 1, Title = "第一个物品", Price = 8.99M });
+        }
+
 
         private static List<Album> GetAlbums()
         {

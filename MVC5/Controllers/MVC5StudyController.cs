@@ -89,5 +89,9 @@ namespace MVC5.Controllers
 
 
         #endregion
+
+        #region 8 Ajax
+
+        #endregion
     }
 }

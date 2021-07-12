@@ -8,8 +8,9 @@ namespace MVC5.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string userName)
         {
+            ViewBag.UserName = userName;
             return View();
         }
 
