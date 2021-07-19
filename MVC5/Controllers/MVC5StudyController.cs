@@ -93,5 +93,36 @@ namespace MVC5.Controllers
         #region 8 Ajax
 
         #endregion
+
+        #region 9 路由
+
+        /// <summary>
+        /// 内敛约束
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
+        /// <param name="day"></param>
+        /// <returns></returns>
+        public ActionResult Constraint(string year, string month, string day)
+        {
+            ViewBag.Year = year;
+            ViewBag.Month = month;
+            ViewBag.Day = day;
+
+            return View();
+        }
+
+        #endregion
+
+        #region 10 WebAPI
+
+
+        #endregion
+
+        #region 13 依赖注入
+
+        //控制反转
+
+        #endregion
     }
 }
