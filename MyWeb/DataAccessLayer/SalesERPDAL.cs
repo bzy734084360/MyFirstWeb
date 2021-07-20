@@ -14,7 +14,7 @@ namespace MyWeb.DataAccessLayer
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Employee>().ToTable("StudyEmployee");
+            modelBuilder.Entity<Employee>().ToTable("TblEmployee");
             base.OnModelCreating(modelBuilder);
         }
         public DbSet<Employee> Employees { get; set; }
