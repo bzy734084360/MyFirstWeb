@@ -11,7 +11,7 @@ namespace MyWeb.BusinessLayer
     {
         public List<Employee> GetEmployees()
         {
-            SalesERPDAL salesDal = new SalesERPDAL();
+            StudayDal salesDal = new StudayDal();
             return salesDal.Employees.ToList();
             //List<Employee> employees = new List<Employee>();
             //Employee emp = new Employee();

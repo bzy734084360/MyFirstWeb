@@ -203,6 +203,7 @@
     <Compile Include="Controllers\MVCController.cs" />
     <Compile Include="Controllers\VueController.cs" />
     <Compile Include="DataAccessLayer\SalesERPDAL.cs" />
+    <Compile Include="DataAccessLayer\StudayDal.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

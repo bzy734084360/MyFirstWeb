@@ -7,9 +7,9 @@ using System.Web;
 
 namespace MyWeb.DataAccessLayer
 {
-    public class SalesERPDAL : DbContext
+    public class StudayDal : DbContext
     {
-        public SalesERPDAL() : base("StudayDal")
+        public StudayDal() : base("StudayDal")
         {
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
