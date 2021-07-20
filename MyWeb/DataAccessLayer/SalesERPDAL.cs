@@ -9,6 +9,9 @@ namespace MyWeb.DataAccessLayer
 {
     public class SalesERPDAL : DbContext
     {
+        public SalesERPDAL() : base("SalesERPDAL")
+        {
+        }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Employee>().ToTable("TblEmployee");

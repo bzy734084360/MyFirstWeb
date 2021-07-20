@@ -197,6 +197,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BusinessLayer\EmployeeBusinessLayer.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LayuiController.cs" />
     <Compile Include="Controllers\MVCController.cs" />
@@ -374,6 +375,7 @@
     <Content Include="Views\Vue\Index.cshtml" />
     <Content Include="Views\Shared\_VueLayout.cshtml" />
     <Content Include="Views\Vue\VueExamples.cshtml" />
+    <Content Include="Views\Employee\CreateEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -19,7 +19,7 @@ namespace MVC5.Tests.Controllers
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Index() as ViewResult;
+            ViewResult result = controller.Index("asda") as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
@@ -45,7 +45,7 @@ namespace MVC5.Tests.Controllers
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Contact() as ViewResult;
+            ViewResult result = controller.Contact(12) as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

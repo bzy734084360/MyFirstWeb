@@ -10,7 +10,7 @@ namespace MyWeb.Model
     {
         [Key]
         public int EmployeeId { get; set; }
-        public string FistName { get; set; }
+        public string FirstName { get; set; }
 
         public string LastName { get; set; }
 

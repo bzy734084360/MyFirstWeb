@@ -77,7 +77,7 @@ namespace MyWeb.Controllers
             foreach (Employee item in employees)
             {
                 EmployeeViewModel empViewModel = new EmployeeViewModel();
-                empViewModel.EmployeeName = item.FistName + " " + item.LastName;
+                empViewModel.EmployeeName = item.FirstName + " " + item.LastName;
                 empViewModel.Salary = item.Salary.ToString("C");
                 if (item.Salary > 15000)
                 {
