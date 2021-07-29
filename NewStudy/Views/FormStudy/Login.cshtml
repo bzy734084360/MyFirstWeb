@@ -13,7 +13,7 @@
 </head>
 <body>
     <div>
-        @using (Html.BeginForm("DoLogin", "Authentication", FormMethod.Post))
+        @using (Html.BeginForm("DoLogin", "FormStudy", FormMethod.Post))
         {
             @Html.LabelFor(c => c.UserName)
             @Html.TextBoxFor(x => x.UserName)

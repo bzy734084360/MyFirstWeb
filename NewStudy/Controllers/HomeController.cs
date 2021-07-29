@@ -1,4 +1,4 @@
-﻿using NewStudy.App_Start.Action;
+﻿using NewStudy.App_Start;
 using NewStudy.BusinessLayer;
 using NewStudy.Model;
 using NewStudy.ViewModels;
@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace NewStudy.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         // GET: Home
         public ActionResult Index()
@@ -71,6 +71,7 @@ namespace NewStudy.Controllers
             //    vmEmp.SalaryColor = "green";
             //}
             ////vmEmp.UserName = "Admin";
+            ViewBag.UserName = this.CurrentUser.UserName;
             EmployeeListViewModel employeeListViewModel = new EmployeeListViewModel();
             EmployeeBusinessLayer empbal = new EmployeeBusinessLayer();
             List<Employee> employees = empbal.GetEmployees();

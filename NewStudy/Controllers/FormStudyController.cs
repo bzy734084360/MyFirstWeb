@@ -1,6 +1,7 @@
 ﻿using NewStudy.FormStudy;
 using NewStudy.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
@@ -9,7 +10,7 @@ using System.Web.Mvc;
 
 namespace NewStudy.Controllers
 {
-    public class FormStudyController : Controller
+    public class FormStudyController : BaseController
     {
         /// <summary>
         /// 登录首页
@@ -36,6 +37,7 @@ namespace NewStudy.Controllers
                     UserRole = "Admin"
                 };
                 HttpFormsAuthentication.SetAuthenticationCookie(u.UserName, userData, 7);
+                GetOnline(u.UserName);
                 return RedirectToAction("Index", "Home");
             }
             //重新登录
@@ -45,6 +47,34 @@ namespace NewStudy.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        /// <summary>
+        /// 登录时记录登录的用户ID+SessionID，可利用Application、Cache、数据库等。
+        /// </summary>
+        /// <param name="userName">用户名</param>
+        private void GetOnline(string userName)
+        {
+            Hashtable SingleOnline = (Hashtable)System.Web.HttpContext.Current.Application["MyWeb"];
+            if (SingleOnline == null)
+            {
+                SingleOnline = new Hashtable();
+            }
+
+            Session["mySession"] = "MyWeb_UserOnLine";
+            //SessionID
+            if (SingleOnline.ContainsKey(userName))
+            {
+                SingleOnline[userName] = Session.SessionID;
+            }
+            else
+            {
+                SingleOnline.Add(userName, Session.SessionID);
+            }
+
+            System.Web.HttpContext.Current.Application.Lock();
+            System.Web.HttpContext.Current.Application["MyWeb_Online"] = SingleOnline;
+            System.Web.HttpContext.Current.Application.UnLock();
         }
     }
 }

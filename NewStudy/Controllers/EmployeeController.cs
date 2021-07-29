@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace NewStudy.Controllers
 {
-    public class EmployeeController : Controller
+    public class EmployeeController : BaseController
     {
         public ActionResult AddNew()
         {

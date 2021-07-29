@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace NewStudy.Controllers
 {
-    public class MVCController : Controller
+    public class MVCController : BaseController
     {
         // GET: MVC
         public ActionResult Index()

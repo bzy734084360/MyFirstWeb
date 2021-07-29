@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace NewStudy.Controllers
 {
-    public class LayuiController : Controller
+    public class LayuiController : BaseController
     {
         // GET: Layui
         public ActionResult Home()

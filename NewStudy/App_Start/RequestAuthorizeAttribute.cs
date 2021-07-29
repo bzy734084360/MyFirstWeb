@@ -6,10 +6,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace NewStudy.App_Start.Action
+namespace NewStudy.App_Start
 {
     /// <summary>
-    /// 方法过滤器
+    /// 授权过滤器
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class RequestAuthorizeAttribute : AuthorizeAttribute

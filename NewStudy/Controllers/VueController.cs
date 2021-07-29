@@ -9,7 +9,7 @@ namespace NewStudy.Controllers
     /// <summary>
     /// Vue Study
     /// </summary>
-    public class VueController : Controller
+    public class VueController : BaseController
     {
         /// <summary>
         /// Vue介绍

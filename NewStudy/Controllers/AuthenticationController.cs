@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace NewStudy.Controllers
 {
-    public class AuthenticationController : Controller
+    public class AuthenticationController : BaseController
     {
         // GET: Authentication
         public ActionResult Login()
