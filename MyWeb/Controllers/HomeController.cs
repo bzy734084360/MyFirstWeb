@@ -78,7 +78,7 @@ namespace MyWeb.Controllers
             {
                 EmployeeViewModel empViewModel = new EmployeeViewModel();
                 empViewModel.EmployeeName = item.FirstName + " " + item.LastName;
-                empViewModel.Salary = item.Salary.ToString("C");
+                empViewModel.Salary = item.Salary.ToString();
                 if (item.Salary > 15000)
                 {
                     empViewModel.SalaryColor = "yellow";

@@ -34,5 +34,12 @@ namespace MyWeb.BusinessLayer
 
             //return employees;
         }
+        public Employee SaveEmployee(Employee e)
+        {
+            StudayDal salesDal = new StudayDal();
+            salesDal.Employees.Add(e);
+            salesDal.SaveChanges();
+            return e;
+        }
     }
 }
