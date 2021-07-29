@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigStarFK.Cache.Redis", "Bi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigStarFK.Cache.Factory", "BigStarFK.Cache\BigStarFK.Cache.Factory\BigStarFK.Cache.Factory.csproj", "{D89B40CC-1CE8-4B50-B1C5-FEB9E87857CB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewStudy", "NewStudy\NewStudy.csproj", "{93C0CB40-F6A7-45A9-BC0B-3129D8DCCA84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{D89B40CC-1CE8-4B50-B1C5-FEB9E87857CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D89B40CC-1CE8-4B50-B1C5-FEB9E87857CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D89B40CC-1CE8-4B50-B1C5-FEB9E87857CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93C0CB40-F6A7-45A9-BC0B-3129D8DCCA84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93C0CB40-F6A7-45A9-BC0B-3129D8DCCA84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93C0CB40-F6A7-45A9-BC0B-3129D8DCCA84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93C0CB40-F6A7-45A9-BC0B-3129D8DCCA84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

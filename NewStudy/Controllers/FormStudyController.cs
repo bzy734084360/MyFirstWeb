@@ -1,5 +1,5 @@
-﻿using MyWeb.FormStudy;
-using MyWeb.Model;
+﻿using NewStudy.FormStudy;
+using NewStudy.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MyWeb.Controllers
+namespace NewStudy.Controllers
 {
     public class FormStudyController : Controller
     {

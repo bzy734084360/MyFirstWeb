@@ -5,7 +5,7 @@ using System.Security.Principal;
 using System.Web;
 using System.Web.Security;
 
-namespace MyWeb
+namespace NewStudy
 {
     /// <summary>
     /// Forms认证主体

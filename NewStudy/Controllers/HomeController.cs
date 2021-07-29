@@ -1,14 +1,14 @@
-﻿using MyWeb.App_Start.Action;
-using MyWeb.BusinessLayer;
-using MyWeb.Model;
-using MyWeb.ViewModels;
+﻿using NewStudy.App_Start.Action;
+using NewStudy.BusinessLayer;
+using NewStudy.Model;
+using NewStudy.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MyWeb.Controllers
+namespace NewStudy.Controllers
 {
     public class HomeController : Controller
     {

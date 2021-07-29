@@ -1,0 +1,56 @@
+﻿@*@model NewStudy.Model.Employee*@
+@*@model NewStudy.ViewModels.EmployeeViewModel*@
+@model NewStudy.ViewModels.EmployeeListViewModel
+@using NewStudy.ViewModels
+@{
+    ViewBag.Title = "ModelView";
+}
+
+<div>
+    <p>Model</p>
+    @*<h1>Views</h1>
+        <p>@Model.FistName </p>
+        <p>@Model.LastName </p>
+        @if (Model.Salary > 15000)
+        {
+            <span style="background-color:yellow">
+                @Model.Salary
+            </span>
+        }
+        else
+        {
+            <span style="background-color:blue">
+                @Model.Salary
+            </span>
+        }*@
+    <p>ViewModel</p>
+    @*Hello @Model.UserName
+        <hr />
+        <div>
+            <b>Employee Details</b><br />
+            Employee Name:@Model.EmployeeName<br />
+            <span style="background-color:@Model.SalaryColor">
+                Employee Salary:@Model.Salary
+            </span>
+        </div>*@
+    <p>Collection</p>
+    <hr />
+    <a href="/Employee/AddNew">添加用户</a>
+    <hr />
+    <div>
+        <table>
+            <tr>
+                <th>Employee Name</th>
+                <th>Salary</th>
+            </tr>
+            @foreach (EmployeeViewModel item in Model.Employees)
+            {
+                <tr>
+                    <td>@item.EmployeeName</td>
+                    <td><span style="background-color:@item.SalaryColor">@item.Salary</span></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+

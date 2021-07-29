@@ -191,11 +191,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\Action\RequestAuthorizeAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="BusinessLayer\EmployeeBusinessLayer.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
@@ -205,6 +204,7 @@
     <Compile Include="Controllers\MVCController.cs" />
     <Compile Include="Controllers\VueController.cs" />
     <Compile Include="DataAccessLayer\StudayDal.cs" />
+    <Compile Include="FormStudy\HttpFormsAuthentication.cs" />
     <Compile Include="FormStudy\IUserData.cs" />
     <Compile Include="FormStudy\Principal.cs" />
     <Compile Include="FormStudy\UserData.cs" />
@@ -217,7 +217,6 @@
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\UserDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CreateEmployeeViewModel.cs" />
     <Compile Include="ViewModels\EmployeeListViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
@@ -338,9 +337,6 @@
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\layui\font\iconfont.eot" />
     <Content Include="Content\layui\font\iconfont.ttf" />
     <Content Include="Content\layui\font\iconfont.woff" />
@@ -384,11 +380,11 @@
     <Content Include="Views\Vue\VueExamples.cshtml" />
     <Content Include="Views\Employee\CreateEmployee.cshtml" />
     <Content Include="Views\Authentication\Login.cshtml" />
+    <Content Include="Views\FormStudy\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Auth\" />
-    <Folder Include="Views\FormStudy\" />
     <Folder Include="Views\MVC\" />
   </ItemGroup>
   <ItemGroup>
@@ -396,7 +392,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <PropertyGroup>

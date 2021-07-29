@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Shared/Layui/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<div>
+    <button onclick="GoLayuiHome()">跳转Layui页面</button>
+    <button onclick="GoVueHome()">跳转Vue页面</button>
+    <a href="~/Home/ModelView">七天MVC</a>
+</div>
+<script>
+    function GoLayuiHome() {
+        window.location.href = "layui/Home";
+    }
+    function GoVueHome() {
+        window.location.href = "Vue/Index";
+    }
+</script>
