@@ -41,7 +41,7 @@ namespace NewStudy.FormStudy
             HttpContext.Current.Response.Cookies.Add(cookie);
         }
         /// <summary>
-        /// 接收请求获取用户数据
+        /// 从缓存中解析出用户数据
         /// </summary>
         /// <typeparam name="TUserData"></typeparam>
         /// <param name="context"></param>
