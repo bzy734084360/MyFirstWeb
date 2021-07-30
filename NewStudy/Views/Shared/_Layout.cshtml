@@ -11,9 +11,10 @@
 <body>
     <div>
         @RenderBody()
-    </div>
-    <div style="margin-top:30px">
-        <button onclick="ShowMsg()">展示母版页弹窗</button>
+        <hr />
+        <footer>
+            <button onclick="ShowMsg()">展示母版页弹窗</button>
+        </footer>
     </div>
     <!-- 你的HTML代码 -->
     <script src="~/Content/layui/layui.js"></script>
@@ -21,7 +22,7 @@
         //一般直接写在一个js文件中
         layui.use(['layer', 'form'], function () {
             var layer = layui.layer
-            , form = layui.form;
+                , form = layui.form;
         });
         function ShowMsg() {
             layer.msg("母版页提示框", { icon: 1, time: 1500 });

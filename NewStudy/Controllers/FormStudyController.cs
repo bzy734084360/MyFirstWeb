@@ -21,6 +21,12 @@ namespace NewStudy.Controllers
         /// <returns></returns>
         public ActionResult Login()
         {
+            string returnUrl = string.Empty;
+            if (Request["ReturnUrl"] != null)
+            {
+                returnUrl = Request["ReturnUrl"];
+            }
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
         /// <summary>
