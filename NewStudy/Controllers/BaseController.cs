@@ -8,6 +8,7 @@ using System.Web.Mvc;
 namespace NewStudy.Controllers
 {
     [LoginActionFilter]
+    [RequestAuthorize]
     public class BaseController : Controller
     {
         /// <summary>
@@ -18,7 +19,7 @@ namespace NewStudy.Controllers
         {
             get
             {
-                return (HttpContext.User as Principal).UserData as UserData;
+                return (User as Principal).UserData as UserData;
             }
         }
     }

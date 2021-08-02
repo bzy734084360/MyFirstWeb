@@ -44,13 +44,13 @@ namespace NewStudy.Controllers
                 return Content("5");
             }
             //姓名正确跳转
-            if (Account == "admin" && Password == "1234")
+            if ((Account == "admin" && Password == "1234") || (Account == "test" && Password == "1234"))
             {
                 UserData userData = new UserData()
                 {
                     UserName = Account,
                     UserID = 1,
-                    UserRole = "Admin"
+                    UserRole = Account == "admin" ? "Admin" : ""
                 };
                 HttpFormsAuthentication.SetAuthenticationCookie(Account, userData, 7);
                 GetOnline(Account);
@@ -71,7 +71,7 @@ namespace NewStudy.Controllers
         /// <param name="userName">用户名</param>
         private void GetOnline(string userName)
         {
-            Hashtable SingleOnline = (Hashtable)System.Web.HttpContext.Current.Application["MyWeb"];
+            Hashtable SingleOnline = (Hashtable)System.Web.HttpContext.Current.Application["MyWeb_Online"];
             if (SingleOnline == null)
             {
                 SingleOnline = new Hashtable();
@@ -88,6 +88,9 @@ namespace NewStudy.Controllers
                 SingleOnline.Add(userName, Session.SessionID);
             }
 
+            //针对于后台使用此方法可行
+            //针对于分布式的服务器修改方案：
+            //使用服务器缓存 redis 或其他第三方统一管理缓存 key userName value 存储sessionId
             System.Web.HttpContext.Current.Application.Lock();
             System.Web.HttpContext.Current.Application["MyWeb_Online"] = SingleOnline;
             System.Web.HttpContext.Current.Application.UnLock();
@@ -112,7 +115,7 @@ namespace NewStudy.Controllers
             //清除session
             Session.Abandon();  //取消当前会话
             Session.Clear();    //清除当前浏览器所以Session
-            return Content("1");
+            return View("Login");
         }
     }
 }

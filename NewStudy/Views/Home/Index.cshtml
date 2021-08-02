@@ -5,13 +5,20 @@
 <div>
     <button onclick="GoLayuiHome()">跳转Layui页面</button>
     <button onclick="GoVueHome()">跳转Vue页面</button>
-    <a href="~/Home/ModelView">七天MVC</a>
+    <button onclick="GoMvcStudy()">七天MVC</button>
+    <button onclick="GoLogin()">登录</button>
 </div>
 <script>
     function GoLayuiHome() {
-        window.location.href = "layui/Home";
+        window.location.href ='@Url.Content("~/layui/Home")';
     }
     function GoVueHome() {
-        window.location.href = "Vue/Index";
+        window.location.href ='@Url.Content("~/Vue/Index")';
+    }
+    function GoMvcStudy() {
+        window.location.href ='@Url.Content("~/Employee/Index")';
+    }
+    function GoLogin() {
+        window.location.href ='@Url.Content("~/FormStudy/Login")';
     }
 </script>

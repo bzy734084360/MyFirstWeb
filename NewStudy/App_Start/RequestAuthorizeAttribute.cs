@@ -9,7 +9,7 @@ using System.Web.Security;
 namespace NewStudy.App_Start
 {
     /// <summary>
-    /// 授权过滤器
+    /// 授权认证处理
     /// </summary>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class RequestAuthorizeAttribute : AuthorizeAttribute
@@ -31,12 +31,12 @@ namespace NewStudy.App_Start
                 return;
             }
             //权限认证
-            if (!principal.IsInRole(base.Roles) || !principal.IsInUser(base.Users))
-            {
-                SetUnAuthorizedResult(context);
-                HandleUnauthorizedRequest(context);
-                return;
-            }
+            //if (!principal.IsInRole(base.Roles) || !principal.IsInUser(base.Users))
+            //{
+            //    SetUnAuthorizedResult(context);
+            //    HandleUnauthorizedRequest(context);
+            //    return;
+            //}
             ////验证配置文件
             //if (!ValidateAuthorizeConfig(principal, context))
             //{

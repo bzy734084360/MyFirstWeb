@@ -1,17 +1,24 @@
-﻿
-@{
-    Layout = null;
-}
-@using NewStudy.ViewModels
+﻿@using NewStudy.ViewModels
 @model CreateEmployeeViewModel
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>CreateEmployee</title>
-</head>
-<body>
+@section TitleSection{
+    CreateEmployee
+}
+@section HeaderSection{
+    <script src="~/Scripts/Validations.js"></script>
+    <script>
+        function ResetForm() {
+            document.getElementById('TxtFName').value = "";
+            document.getElementById('TxtLName').value = "";
+            document.getElementById('TxtSalary').value = "";
+        }
+    </script>
+}
+@section ContentBody
+{
     <div>
         <form action="/Employee/SaveEmployee" method="post">
             <table>
@@ -56,15 +63,7 @@
                         <input type="submit" name="BtnSubmit" value="Cancel" />
                     </td>
                 </tr>
-            </table>>
+            </table>
         </form>
     </div>
-    <script>
-        function ResetForm() {
-            document.getElementById('TxtFName').value = "";
-            document.getElementById('TxtLName').value = "";
-            document.getElementById('TxtSalary').value = "";
-        }
-    </script>
-</body>
-</html>
+}

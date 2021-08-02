@@ -27,7 +27,6 @@ namespace NewStudy.FormStudy
             //FomrAuthentication 提供web forms身份验证
             //加密
             string encryptValue = FormsAuthentication.Encrypt(ticket);
-
             //创建cookie
             HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptValue);
             cookie.HttpOnly = true;

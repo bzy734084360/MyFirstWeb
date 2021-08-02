@@ -51,17 +51,17 @@
                         cache: false,
                         success: function (rs) {
                             if (parseInt(rs) === -1) {
-                                alert("登录账户不存在!");
+                                ShowErrorMsg('登录账户不存在');
                                 $("#loginName").focus();
                             } else if (parseInt(rs) === 2) {
-                                alert("登录账户被锁定!");
+                                ShowErrorMsg('登录账户被锁定');
                                 $("#loginName").focus();
                             } else if (parseInt(rs) === 4) {
-                                alert("登录密码错误!");
+                                ShowErrorMsg('登录密码错误');
                                 $("#password").val("");
                                 $("#password").focus();
                             } else if (parseInt(rs) === 5) {
-                                alert("验证码输入错误!");
+                                ShowErrorMsg('验证码输入错误');
                                 $("#code").val("");
                                 $("#code").focus();
                             } else if (parseInt(rs) === 3) {
@@ -74,7 +74,7 @@
                                     Load();
                                 }
                             } else {
-                                alert(rs);
+                                ShowErrorMsg(rs);
                             }
                         }
                     });
@@ -96,7 +96,6 @@
             function check() {
                 if ($("#loginName").val() === "") {
                     ShowErrorMsg('用户名不得为空');
-                    //alert("用户名不得为空!");
                     $("#loginName").focus();
                     return false;
                 } else {
@@ -104,12 +103,12 @@
                 }
 
                 if ($("#password").val() === "") {
-                    alert("密码不得为空!");
+                    ShowErrorMsg('密码不得为空');
                     $("#password").focus();
                     return false;
                 }
                 if ($("#code").val() === "") {
-                    alert("验证码不得为空!");
+                    ShowErrorMsg('验证码不得为空');
                     $("#code").focus();
                     return false;
                 }
@@ -167,7 +166,7 @@
                 }
             });
         function ShowErrorMsg(msg) {
-            layer.msg(msg, { icon: 1, time: 1500 });
+            layer.msg(msg, { icon: 5, time: 1500 });
         }
     </script>
 </head>
@@ -199,7 +198,7 @@
                         </i>
                     </div>
                     <span style="padding-right:3%;"><a href="javascript:cancel();" class="btn btn-success">取消</a></span>
-                    <span><a onclick="severCheck();" class="flip-link btn btn-info" id="toLogin">登录</a></span>
+                    <span><a onclick="severCheck();" id="toLogin">登录</a></span>
                 </div>
             </form>
         </div>

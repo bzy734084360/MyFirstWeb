@@ -11,6 +11,7 @@ namespace NewStudy.App_Start
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            //根据Forms 验证 获取用户名 查询redis缓存
             Hashtable singleOnline = (Hashtable)filterContext.HttpContext.Application["MyWeb_Online"];
             // 判断当前SessionID是否存在
             if (singleOnline != null && singleOnline.ContainsKey(filterContext.HttpContext.User.Identity.Name))

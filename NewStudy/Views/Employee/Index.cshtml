@@ -1,0 +1,35 @@
+﻿@model NewStudy.ViewModels.EmployeeListViewModel
+@using NewStudy.ViewModels
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+@section TitleSection{
+    MyView
+}
+@section ContentBody{
+    <div>
+        @{
+            Html.RenderAction("GetAddNewLink", "Employee");
+        }
+        <p>欢迎(Forms用户数据)：@ViewBag.UserName</p>
+        <hr />
+        <div>
+            <table border="1">
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Salary</th>
+                </tr>
+                @foreach (EmployeeViewModel item in Model.Employees)
+                {
+                    <tr>
+                        <td>@item.EmployeeName</td>
+                        <td><span style="background-color:@item.SalaryColor">@item.Salary</span></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+}
+
+

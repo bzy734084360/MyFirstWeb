@@ -1,0 +1,22 @@
+﻿@using NewStudy.ViewModels
+@model BaseViewModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@RenderSection("TitleSection")</title>
+    @RenderSection("HeaderSection", false)
+</head>
+<body>
+    <div style="text-align:right">
+        Hello,@Model.UserName
+        <a href="~/FormStudy/OutLogin">退出登录</a>
+    </div>
+    <hr />
+    <div>
+        @RenderSection("ContentBody")
+    </div>
+    @Html.Partial("Footer", Model.FooterData)
+</body>
+</html>

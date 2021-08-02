@@ -1,4 +1,5 @@
-﻿using NewStudy.BusinessLayer;
+﻿using NewStudy.App_Start;
+using NewStudy.BusinessLayer;
 using NewStudy.DataAccessLayer;
 using NewStudy.Model;
 using NewStudy.ViewModels;
@@ -12,10 +13,41 @@ namespace NewStudy.Controllers
 {
     public class EmployeeController : BaseController
     {
+        [HeaderFooterFilter]
+        public ActionResult Index()
+        {
+            ViewBag.UserName = "";// this.CurrentUser.UserName;
+            EmployeeListViewModel employeeListViewModel = new EmployeeListViewModel();
+            EmployeeBusinessLayer empbal = new EmployeeBusinessLayer();
+            List<Employee> employees = empbal.GetEmployees();
+            List<EmployeeViewModel> employeeViewModels = new List<EmployeeViewModel>();
+
+            foreach (Employee item in employees)
+            {
+                EmployeeViewModel empViewModel = new EmployeeViewModel();
+                empViewModel.EmployeeName = item.FirstName + " " + item.LastName;
+                empViewModel.Salary = item.Salary.ToString();
+                if (item.Salary > 15000)
+                {
+                    empViewModel.SalaryColor = "yellow";
+                }
+                else
+                {
+                    empViewModel.SalaryColor = "green";
+                }
+                employeeViewModels.Add(empViewModel);
+            }
+            employeeListViewModel.Employees = employeeViewModels;
+
+            return View(employeeListViewModel);
+        }
+        [HeaderFooterFilter]
         public ActionResult AddNew()
         {
-            return View("CreateEmployee", new CreateEmployeeViewModel());
+            CreateEmployeeViewModel createEmployeeViewModel = new CreateEmployeeViewModel();
+            return View("CreateEmployee", createEmployeeViewModel);
         }
+        [HeaderFooterFilter]
         public ActionResult SaveEmployee(Employee e, string BtnSubmit)
         {
             switch (BtnSubmit)
@@ -25,7 +57,7 @@ namespace NewStudy.Controllers
                     {
                         EmployeeBusinessLayer bal = new EmployeeBusinessLayer();
                         bal.SaveEmployee(e);
-                        return RedirectToAction("ModelView", "Home");
+                        return RedirectToAction("Index", "Employee");
                     }
                     else
                     {
@@ -43,9 +75,21 @@ namespace NewStudy.Controllers
                         return View("CreateEmployee", vm);
                     }
                 case "Cancel":
-                    return RedirectToAction("ModelView", "Home");
+                    return RedirectToAction("Index", "Employee");
             }
             return new EmptyResult();
+        }
+
+        public ActionResult GetAddNewLink()
+        {
+            if (CurrentUser.UserRole == "Admin")
+            {
+                return PartialView("AddNewLink");
+            }
+            else
+            {
+                return new EmptyResult();
+            }
         }
 
     }
