@@ -14,9 +14,10 @@ namespace NewStudy.Controllers
     public class EmployeeController : BaseController
     {
         [HeaderFooterFilter]
+        [Route("Employee/List")]
         public ActionResult Index()
         {
-            ViewBag.UserName = "";// this.CurrentUser.UserName;
+            ViewBag.UserName = this.CurrentUser.UserName;
             EmployeeListViewModel employeeListViewModel = new EmployeeListViewModel();
             EmployeeBusinessLayer empbal = new EmployeeBusinessLayer();
             List<Employee> employees = empbal.GetEmployees();
@@ -41,12 +42,14 @@ namespace NewStudy.Controllers
 
             return View(employeeListViewModel);
         }
+        [AdminFilter]
         [HeaderFooterFilter]
         public ActionResult AddNew()
         {
             CreateEmployeeViewModel createEmployeeViewModel = new CreateEmployeeViewModel();
             return View("CreateEmployee", createEmployeeViewModel);
         }
+        [AdminFilter]
         [HeaderFooterFilter]
         public ActionResult SaveEmployee(Employee e, string BtnSubmit)
         {

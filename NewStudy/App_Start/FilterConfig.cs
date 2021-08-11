@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using NewStudy.App_Start;
+using System.Web;
 using System.Web.Mvc;
 
 namespace NewStudy
@@ -7,7 +8,8 @@ namespace NewStudy
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            filters.Add(new EmployeeExceptionFilter());
+            filters.Add(new RequestAuthorizeAttribute());
         }
     }
 }

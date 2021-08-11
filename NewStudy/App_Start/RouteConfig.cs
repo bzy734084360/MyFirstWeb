@@ -12,6 +12,14 @@ namespace NewStudy
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            //添加支持特性定义的路由
+            routes.MapMvcAttributeRoutes();
+
+            routes.MapRoute(
+                name: "Upload",
+                url: "Employee/BulkUpload",
+                defaults: new { controller = "BulkUpload", action = "Index" }
+                );
 
             routes.MapRoute(
                 name: "Default",

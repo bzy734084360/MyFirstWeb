@@ -13,6 +13,7 @@ using System.Web.Security;
 
 namespace NewStudy.Controllers
 {
+    [AllowAnonymous]
     public class FormStudyController : Controller
     {
         /// <summary>

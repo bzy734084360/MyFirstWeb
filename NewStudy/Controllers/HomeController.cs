@@ -13,6 +13,7 @@ namespace NewStudy.Controllers
     public class HomeController : BaseController
     {
         // GET: Home
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();

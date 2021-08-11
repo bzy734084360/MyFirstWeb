@@ -20,7 +20,7 @@ namespace NewStudy.App_Start
                     var user = (HttpContext.Current.User as Principal).UserData as UserData;
                     bvm.FooterData = new FooterViewModel();
                     bvm.FooterData.CompanyName = "GrumpyFish";
-                    bvm.FooterData.Year = "2021-3021";
+                    bvm.FooterData.Year = "2021-2031";
                     bvm.UserName = user.UserName;
                 }
             }

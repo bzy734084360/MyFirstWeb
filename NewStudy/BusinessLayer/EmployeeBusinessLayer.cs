@@ -41,5 +41,12 @@ namespace NewStudy.BusinessLayer
             salesDal.SaveChanges();
             return e;
         }
+
+        public void UploadEmployees(List<Employee> employees)
+        {
+            StudayDal studayDal = new StudayDal();
+            studayDal.Employees.AddRange(employees);
+            studayDal.SaveChanges();
+        }
     }
 }

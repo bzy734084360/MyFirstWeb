@@ -18,7 +18,8 @@ namespace NewStudy.App_Start
         public override void OnAuthorization(AuthorizationContext context)
         {
             //是否允许匿名访问
-            if (context.ActionDescriptor.IsDefined(typeof(AllowAnonymousAttribute), false))
+            if (context.ActionDescriptor.ControllerDescriptor.IsDefined(typeof(AllowAnonymousAttribute), false)
+                || context.ActionDescriptor.IsDefined(typeof(AllowAnonymousAttribute), false))
             {
                 return;
             }

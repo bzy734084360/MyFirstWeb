@@ -8,7 +8,6 @@ using System.Web.Mvc;
 namespace NewStudy.Controllers
 {
     [LoginActionFilter]
-    [RequestAuthorize]
     public class BaseController : Controller
     {
         /// <summary>
