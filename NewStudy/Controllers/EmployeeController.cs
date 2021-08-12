@@ -1,6 +1,5 @@
 ﻿using NewStudy.App_Start;
 using NewStudy.BusinessLayer;
-using NewStudy.DataAccessLayer;
 using NewStudy.Model;
 using NewStudy.ViewModels;
 using System;
@@ -14,7 +13,6 @@ namespace NewStudy.Controllers
     public class EmployeeController : BaseController
     {
         [HeaderFooterFilter]
-        [Route("Employee/List")]
         public ActionResult Index()
         {
             ViewBag.UserName = this.CurrentUser.UserName;

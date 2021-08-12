@@ -48,12 +48,6 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
       <HintPath>..\packages\Portable.BouncyCastle.1.8.6\lib\net40\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=1.3.1.9, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.1.3.1\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
@@ -137,7 +131,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="BusinessLayer\EmployeeBusinessLayer.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BulkUploadController.cs" />
@@ -148,7 +141,6 @@
     <Compile Include="Controllers\LayuiController.cs" />
     <Compile Include="Controllers\MVCController.cs" />
     <Compile Include="Controllers\VueController.cs" />
-    <Compile Include="DataAccessLayer\StudayDal.cs" />
     <Compile Include="FormStudy\HttpFormsAuthentication.cs" />
     <Compile Include="FormStudy\IUserData.cs" />
     <Compile Include="FormStudy\Principal.cs" />
@@ -157,15 +149,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Logger\FileLogger.cs" />
-    <Compile Include="Model\Employee.cs" />
-    <Compile Include="Model\UserDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\CreateEmployeeViewModel.cs" />
-    <Compile Include="ViewModels\EmployeeListViewModel.cs" />
-    <Compile Include="ViewModels\EmployeeViewModel.cs" />
-    <Compile Include="ViewModels\FileUploadViewModel.cs" />
-    <Compile Include="ViewModels\FooterViewModel.cs" />
     <Compile Include="WebUtilities\CookieHelper.cs" />
     <Compile Include="WebUtilities\SessionHelper.cs" />
     <Compile Include="WebUtilities\VerifyCode.cs" />
@@ -362,9 +346,21 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">
+      <Project>{14483256-0786-4f97-89e3-aed8808d90a1}</Project>
+      <Name>BusinessEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessLayer\BusinessLayer.csproj">
+      <Project>{c5134c11-06de-4358-9e03-667ad94c502e}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyUtilities\MyUtilities.csproj">
       <Project>{a75890cb-599b-4b48-8412-cbb34190801c}</Project>
       <Name>MyUtilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{8800d51d-57c7-4df5-8813-1133edc6b302}</Project>
+      <Name>ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

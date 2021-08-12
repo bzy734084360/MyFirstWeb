@@ -1,4 +1,5 @@
-﻿using NewStudy.FormStudy;
+﻿using BusinessLayer;
+using NewStudy.FormStudy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace NewStudy
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            BusinessSettings.SetBusiness();
         }
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
         {
