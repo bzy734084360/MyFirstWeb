@@ -6,6 +6,7 @@
     <button onclick="GoLayuiHome()">跳转Layui页面</button>
     <button onclick="GoVueHome()">跳转Vue页面</button>
     <button onclick="GoMvcStudy()">七天MVC</button>
+    <button onclick="GoMvcAreaStudy()">七天MVC(Area)</button>
     <button onclick="GoLogin()">登录</button>
 </div>
 <script>
@@ -17,6 +18,9 @@
     }
     function GoMvcStudy() {
         window.location.href ='@Url.Content("~/Employee/Index")';
+    }
+    function GoMvcAreaStudy() {
+        window.location.href ='@Url.Content("~/SPA/Main/Index")';
     }
     function GoLogin() {
         window.location.href ='@Url.Content("~/FormStudy/Login")';

@@ -1,0 +1,20 @@
+﻿
+@using NewStudy.ViewModels.SPA
+@model MainViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Employee Single Page Application</title>
+</head>
+<body>
+    <div style="text-align:right">
+        Hello,@Model.UserName
+        <a href="~/FormStudy/OutLogin">退出登录</a>
+    </div>
+    <hr />
+    <div>
+    </div>
+    @Html.Partial("Footer", Model.FooterData)
+</body>
+</html>
