@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<hr />
+<p>Get请求示例：</p>
+<div style="border:solid;border-color:aquamarine">
+    <button onclick="GetData()">无参数GET请求</button>
+    <button onclick="GetOneParameter()">一个参数GET请求</button>
+    <button onclick="GetManyParameter()">多个参数GET请求</button>
+    <button onclick="GetManyParameterModel()">实体参数GET请求</button>
+</div>
+<p>Post请求示例</p>
+<div style="border:solid;border-color:palevioletred">
+    <button onclick="PostNoKeyValueParameter()">键值对参数Post请求</button>
+    <button onclick="PostDynamicValueParameter()">动态类型参数Post请求</button>
+    <button onclick="PostJObjectValueParameter()">JObject参数Post请求</button>
+    <button onclick="PostModelValueParameter()">实体参数Post请求</button>
+
+</div>
+@section scripts{
+    <script>
+        //Get
+
+        function GetData() {
+            $.ajax({
+                url: "../api/Home/Getdata",
+                type: "Get",
+                dataType: "json",
+                contentType: "application/json",
+                success: function (resultData) {
+                    alert(JSON.stringify(resultData));
+                }
+            });
+        };
+        function GetOneParameter() {
+            $.ajax({
+                url: "../api/Home/GetOneParameter",
+                type: "Get",
+                dataType: "json",
+                contentType: "application/json",
+                data: { ID: 2 },
+                success: function (resultData) {
+                    alert(JSON.stringify(resultData));
+                }
+            });
+        };
+        function GetManyParameter() {
+            $.ajax({
+                url: "../api/Home/GetManyParameter",
+                type: "Get",
+                dataType: "json",
+                contentType: "application/json",
+                data: { ID: 1, Power: "开", Mode: "制冷", Fan: "高", TempSet: 26 },
+                success: function (resultData) {
+                    alert(JSON.stringify(resultData));
+                }
+            });
+        };
+        function GetManyParameterModel() {
+            $.ajax({
+                url: "../api/Home/GetManyParameterModel",
+                type: "Get",
+                dataType: "json",
+                contentType: "application/json",
+                data: { ID: 2, Power: "关", Mode: "制热", Fan: "中", TempSet: 35 },
+                success: function (resultData) {
+                    alert(JSON.stringify(resultData));
+                }
+            });
+        };
+        //Post
+
+        function PostNoKeyValueParameter() {
+            $.ajax({
+                url: "../api/Home/PostNoKeyValueParameter",
+                type: "Post",
+                //dataType: "json",
+                //contentType: "application/json",
+                //注意:键值对请求的时候需要把 datatype: "json"和contentType: "application/json"注释掉，否则后台接收不到数据库。
+                data: { "": "1" },
+                success: function (resultData) {
+                    alert(JSON.stringify(resultData));
+                }
+            });
+        };
+        function PostDynamicValueParameter() {
+            $.ajax({
+                url: "../api/Home/PostDynamicValueParameter",
+                type: "Post",
+                data: { "": "2" },
+                success: function (resultData) {
+                    alert(JSON.stringify(resultData));
+                }
+            });
+        };
+        function PostJObjectValueParameter() {
+            var devi = { ID: 2, Power: "关", Mode: "制热", Fan: "中", TempSet: 35 };
+            $.ajax({
+                url: "../api/Home/PostJObjectValueParameter",
+                type: "Post",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify(devi),
+                success: function (resultData) {
+                    alert(JSON.stringify(resultData));
+                }
+            });
+        };
+        function PostModelValueParameter() {
+            var devi = { ID: 3, Power: "开", Mode: "制冷", Fan: "高", TempSet: 40 };
+            $.ajax({
+                url: "../api/Home/PostModelValueParameter",
+                type: "Post",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify(devi),
+                success: function (resultData) {
+                    alert(JSON.stringify(resultData));
+                }
+            });
+        };
+    </script>
+}
+

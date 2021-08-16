@@ -338,7 +338,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\SPA\Views\Shared\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Auth\" />
     <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
