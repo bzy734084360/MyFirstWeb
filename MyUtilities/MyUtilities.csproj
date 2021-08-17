@@ -37,6 +37,9 @@
     <Reference Include="ICSharpCode.SharpZipLib, Version=1.3.1.9, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.1.3.1\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="NPOI, Version=2.5.4.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <HintPath>..\packages\NPOI.2.5.4\lib\net45\NPOI.dll</HintPath>
     </Reference>
@@ -61,12 +64,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utilities\Json\JsonHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\ConvertHelper.cs" />
     <Compile Include="Utilities\Excel\ColumnEntity.cs" />
     <Compile Include="Utilities\Excel\ExcelConfig.cs" />
     <Compile Include="Utilities\Excel\ExcelHelper.cs" />
     <Compile Include="Utilities\Excel\TemplateMode.cs" />
+    <Compile Include="Utilities\Json\UnixDateTimeConvertor.cs" />
     <Compile Include="Utilities\NetHelper.cs" />
     <Compile Include="Utilities\SecretHelper.cs" />
   </ItemGroup>

@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace MyWebAPI.Controllers
 {
+    [RoutePrefix("api/Home")]
     public class HomeController : ApiController
     {
         /// <summary>
@@ -42,6 +43,7 @@ namespace MyWebAPI.Controllers
         /// 无参数Get请求
         /// </summary>
         /// <returns></returns>
+        [Authorize]
         [HttpGet]
         public IEnumerable<DeviceStatus> GetData()
         {
