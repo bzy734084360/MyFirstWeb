@@ -1,25 +1,40 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace BigStarFK.Cache
+namespace Bzy.Cache
 {
-    /// <summary>
-    /// 定义缓存接口
-    /// </summary>
-    public interface ICache
+    public class StackExchangeRedisCache : ICache
     {
         /// <summary>
         /// 读取缓存
         /// </summary>
         /// <param name="cacheKey">键</param>
         /// <returns></returns>
-        T GetCache<T>(string cacheKey) where T : class;
+        public T GetCache<T>(string cacheKey) where T : class
+        {
+            try
+            {
+                return StackExchangeRedis.Get<T>( cacheKey);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
 
         /// <summary>
         /// 写入缓存
         /// </summary>
         /// <param name="value">对象数据</param>
         /// <param name="cacheKey">键</param>
-        void WriteCache<T>(T value, string cacheKey) where T : class;
+        public void WriteCache<T>(T value, string cacheKey) where T : class
+        {
+            //StackExchangeRedis.Set(cacheKey, value);
+            WriteCache(value, cacheKey, DateTime.Now.AddDays(2));
+        }
 
         /// <summary>
         /// 写入缓存
@@ -27,13 +42,19 @@ namespace BigStarFK.Cache
         /// <param name="value">对象数据</param>
         /// <param name="cacheKey">键</param>
         /// <param name="expireTime">到期时间</param>
-        void WriteCache<T>(T value, string cacheKey, DateTime expireTime) where T : class;
+        public void WriteCache<T>(T value, string cacheKey, DateTime expireTime) where T : class
+        {
+            StackExchangeRedis.Insert( cacheKey, value, expireTime);
+        }
 
         /// <summary>
         /// 移除指定数据缓存
         /// </summary>
         /// <param name="cacheKey">键</param>
-        void RemoveCache(string cacheKey);
+        public void RemoveCache(string cacheKey)
+        {
+            StackExchangeRedis.Remove( cacheKey);
+        }
 
         /// <summary>
         /// 通过模式匹配移除指定数据缓存
@@ -48,11 +69,17 @@ namespace BigStarFK.Cache
         /// 同时，可以使用“/”符号来转义特殊的字符
         /// </remarks>
         /// <param name="pattern">指定模式</param>
-        void RemoveByPattern(string pattern);
+        public void RemoveByPattern(string pattern)
+        {
+            StackExchangeRedis.Remove( pattern);
+        }
 
         /// <summary>
         /// 移除全部缓存
         /// </summary>
-        void RemoveCache();
+        public void RemoveCache()
+        {
+            //StackExchangeRedis.RemoveAll();
+        }
     }
 }

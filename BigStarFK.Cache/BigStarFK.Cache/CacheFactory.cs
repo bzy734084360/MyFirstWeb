@@ -9,6 +9,7 @@ namespace Bzy.Cache.Factory
     {
         public static ICache Cache()
         {
+            //动态配置切换缓存模式
             //string cacheType = ConfigurationManager.AppSettings["CacheType"].Trim();
             string cacheType = "Redis";
             switch (cacheType)

@@ -7,8 +7,8 @@
     <ProjectGuid>{A75890CB-599B-4B48-8412-CBB34190801C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MyUtilities</RootNamespace>
-    <AssemblyName>MyUtilities</AssemblyName>
+    <RootNamespace>Bzy.Utilities</RootNamespace>
+    <AssemblyName>Bzy.Utilities</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -53,6 +53,7 @@
       <HintPath>..\packages\NPOI.2.5.4\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -64,16 +65,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Utilities\Json\JsonHelper.cs" />
+    <Compile Include="Configuration\BaseConfiguration.cs" />
+    <Compile Include="Configuration\ConfigurationHelper.cs" />
+    <Compile Include="Configuration\SystemInfo.cs" />
+    <Compile Include="Json\JsonHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\ConvertHelper.cs" />
-    <Compile Include="Utilities\Excel\ColumnEntity.cs" />
-    <Compile Include="Utilities\Excel\ExcelConfig.cs" />
-    <Compile Include="Utilities\Excel\ExcelHelper.cs" />
-    <Compile Include="Utilities\Excel\TemplateMode.cs" />
-    <Compile Include="Utilities\Json\UnixDateTimeConvertor.cs" />
-    <Compile Include="Utilities\NetHelper.cs" />
-    <Compile Include="Utilities\SecretHelper.cs" />
+    <Compile Include="ConvertHelper.cs" />
+    <Compile Include="Excel\ColumnEntity.cs" />
+    <Compile Include="Excel\ExcelConfig.cs" />
+    <Compile Include="Excel\ExcelHelper.cs" />
+    <Compile Include="Excel\TemplateMode.cs" />
+    <Compile Include="Json\UnixDateTimeConvertor.cs" />
+    <Compile Include="NetHelper.cs" />
+    <Compile Include="SecretHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

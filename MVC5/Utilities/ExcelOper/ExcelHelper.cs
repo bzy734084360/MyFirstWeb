@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using NPOI.XSSF.UserModel;
 using System.Linq;
 
-namespace BigStarFK.Utilities
+namespace Bzy.Utilities
 {
     /// <summary>
     /// NPOI Excel DataTable操作类

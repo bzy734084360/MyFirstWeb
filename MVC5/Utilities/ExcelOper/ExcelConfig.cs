@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 
-namespace BigStarFK.Utilities
+namespace Bzy.Utilities
 {
     /// <summary>
     ///Excel导入导出设置

@@ -1,4 +1,4 @@
-﻿namespace MyUtilities.Utilities
+﻿namespace Bzy.Utilities
 {
     public class TemplateMode
     {

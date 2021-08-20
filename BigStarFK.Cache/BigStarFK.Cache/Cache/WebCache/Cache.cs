@@ -3,14 +3,10 @@ using System.Collections;
 using System.Text.RegularExpressions;
 using System.Web;
 
-namespace BigStarFK.Cache
+namespace Bzy.Cache
 {
     /// <summary>
-    /// 缓存操作 
-    ///     
-    /// <author>
-    ///     <name>EricHu</name>
-    /// </author>
+    /// 缓存操作
     /// </summary>
     public class Cache : ICache
     {

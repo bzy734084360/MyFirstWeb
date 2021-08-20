@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("BigStarFK.Cache.Factory")]
+[assembly: AssemblyTitle("Bzy.Cache.Factory")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("大星软研工作室")]
-[assembly: AssemblyProduct("BigStarFK.Cache.Factory")]
-[assembly: AssemblyCopyright("Copyright © 大星软研工作室 2010～2019")]
+[assembly: AssemblyCompany("暴走鱼")]
+[assembly: AssemblyProduct("Bzy.Cache.Factory")]
+[assembly: AssemblyCopyright("Copyright © 暴走鱼 2010～2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

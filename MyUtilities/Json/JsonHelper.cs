@@ -8,7 +8,7 @@ using System.Data;
 using System.Text.RegularExpressions;
 
 
-namespace MyUtilities.Utilities
+namespace Bzy.Utilities
 {
     /// <summary>
     /// 转换Json格式帮助类

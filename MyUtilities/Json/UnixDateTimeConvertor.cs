@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace MyUtilities.Utilities
+namespace Bzy.Utilities
 {
     public class UnixDateTimeConvertor : DateTimeConverterBase
     {

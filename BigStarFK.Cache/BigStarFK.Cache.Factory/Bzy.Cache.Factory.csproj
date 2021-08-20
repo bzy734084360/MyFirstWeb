@@ -50,17 +50,13 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\BigStarFK.Utilities\BigStarFK.Utilities.csproj">
-      <Project>{1916fe94-6129-4f93-bc55-0cf5f2cf9b05}</Project>
-      <Name>BigStarFK.Utilities</Name>
+    <ProjectReference Include="..\..\MyUtilities\Bzy.Utilities.csproj">
+      <Project>{a75890cb-599b-4b48-8412-cbb34190801c}</Project>
+      <Name>Bzy.Utilities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BigStarFK.Cache.Redis\BigStarFK.Cache.Redis.csproj">
-      <Project>{73c79333-8404-4ea9-bea2-13c8d919d890}</Project>
-      <Name>BigStarFK.Cache.Redis</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BigStarFK.Cache\BigStarFK.Cache.csproj">
+    <ProjectReference Include="..\BigStarFK.Cache\Bzy.Cache.csproj">
       <Project>{1913a094-d544-4061-9da9-98e5492f7b36}</Project>
-      <Name>BigStarFK.Cache</Name>
+      <Name>Bzy.Cache</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

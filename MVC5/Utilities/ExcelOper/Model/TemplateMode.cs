@@ -1,4 +1,4 @@
-﻿namespace BigStarFK.Utilities
+﻿namespace Bzy.Utilities
 {
     public class TemplateMode
     {

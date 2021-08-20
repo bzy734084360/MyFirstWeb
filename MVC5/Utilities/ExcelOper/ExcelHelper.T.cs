@@ -12,7 +12,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace BigStarFK.Utilities
+namespace Bzy.Utilities
 {
     /// <summary>
     /// NPOI Excel泛型操作类

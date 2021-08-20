@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace MyUtilities.Utilities
+namespace Bzy.Utilities
 {
     /// <summary>
     ///Excel导入导出列设置

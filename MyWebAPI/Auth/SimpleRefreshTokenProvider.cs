@@ -11,32 +11,54 @@ namespace MyWebAPI.Auth
     /// <summary>
     /// 刷新token
     /// </summary>
-    public class SimpleRefreshTokenProvider : AuthenticationTokenProvider
+    public class SimpleRefreshTokenProvider : IAuthenticationTokenProvider
     {
+
         /// <summary>
-        /// 多线程访问的键值对
+        /// 
         /// </summary>
-        private static ConcurrentDictionary<string, string> _refreshTokens = new ConcurrentDictionary<string, string>();
-
-        public override void Create(AuthenticationTokenCreateContext context)
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public async Task CreateAsync(AuthenticationTokenCreateContext context)
         {
-            string tokenValue = Guid.NewGuid().ToString("n");
+            var refreshTokenId = Guid.NewGuid().ToString("n");
 
-            context.Ticket.Properties.IssuedUtc = DateTime.UtcNow;
-            context.Ticket.Properties.ExpiresUtc = DateTime.UtcNow.AddDays(60);
+            using (AuthRepository _repo = new AuthRepository())
+            {
+                var token = new RefreshToken()
+                {
+                    Id = refreshTokenId,
+                    UserName = context.Ticket.Identity.Name,
+                    IssuedUtc = DateTime.UtcNow,
+                    ExpiresUtc = DateTime.UtcNow.AddMinutes(30)
+                };
 
-            _refreshTokens[tokenValue] = context.SerializeTicket();
+                context.Ticket.Properties.IssuedUtc = token.IssuedUtc;
+                context.Ticket.Properties.ExpiresUtc = token.ExpiresUtc;
 
-            context.SetToken(tokenValue);
+                token.ProtectedTicket = context.SerializeTicket();
+                //添加刷新token记录
+                var result = await _repo.AddRefreshToken(token);
+
+                if (result)
+                {
+                    context.SetToken(refreshTokenId);
+                }
+
+            }
+        }
+        public Task ReceiveAsync(AuthenticationTokenReceiveContext context)
+        {
+            throw new NotImplementedException();
         }
 
-        public override void Receive(AuthenticationTokenReceiveContext context)
+        public void Receive(AuthenticationTokenReceiveContext context)
         {
-            string value;
-            if (_refreshTokens.TryRemove(context.Token, out value))
-            {
-                context.DeserializeTicket(value);
-            }
+            throw new NotImplementedException();
+        }
+        public void Create(AuthenticationTokenCreateContext context)
+        {
+            throw new NotImplementedException();
         }
     }
 }

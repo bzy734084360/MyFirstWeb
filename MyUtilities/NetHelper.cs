@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
 using System.Web;
 
-namespace MyUtilities.Utilities
+namespace Bzy.Utilities
 {
     /// <summary>
     /// 网络操作相关的类

@@ -1,4 +1,4 @@
-﻿using MyUtilities.Utilities;
+﻿using Bzy.Utilities;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;

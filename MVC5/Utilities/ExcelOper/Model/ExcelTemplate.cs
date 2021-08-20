@@ -4,7 +4,7 @@ using System.Web;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 
-namespace BigStarFK.Utilities
+namespace Bzy.Utilities
 {
     public class ExcelTemplate
     {
