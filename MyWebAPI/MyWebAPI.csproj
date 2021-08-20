@@ -265,7 +265,7 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MyUtilities\Bzy.Utilities.csproj">
+    <ProjectReference Include="..\Bzy.Utilities\Bzy.Utilities.csproj">
       <Project>{a75890cb-599b-4b48-8412-cbb34190801c}</Project>
       <Name>Bzy.Utilities</Name>
     </ProjectReference>

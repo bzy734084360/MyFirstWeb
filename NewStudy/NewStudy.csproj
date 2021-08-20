@@ -358,7 +358,7 @@
       <Project>{c5134c11-06de-4358-9e03-667ad94c502e}</Project>
       <Name>BusinessLayer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MyUtilities\Bzy.Utilities.csproj">
+    <ProjectReference Include="..\Bzy.Utilities\Bzy.Utilities.csproj">
       <Project>{a75890cb-599b-4b48-8412-cbb34190801c}</Project>
       <Name>Bzy.Utilities</Name>
     </ProjectReference>

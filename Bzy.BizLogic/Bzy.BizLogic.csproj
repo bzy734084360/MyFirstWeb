@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D2E4FEDD-71CA-4F87-A3F4-ED5735A76161}</ProjectGuid>
+    <ProjectGuid>{5631DF6D-08D8-4547-846C-CB04E67419A9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Bzy.BizLogic</RootNamespace>
