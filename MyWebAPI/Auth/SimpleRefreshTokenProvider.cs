@@ -1,4 +1,6 @@
-﻿using Microsoft.Owin.Security.Infrastructure;
+﻿using Bzy.BizLogic.BizEntity;
+using Bzy.ServiceCaller.Service;
+using Microsoft.Owin.Security.Infrastructure;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -23,33 +25,35 @@ namespace MyWebAPI.Auth
         {
             var refreshTokenId = Guid.NewGuid().ToString("n");
 
-            using (AuthRepository _repo = new AuthRepository())
+            var token = new RefreshTokenEntity()
             {
-                var token = new RefreshToken()
-                {
-                    Id = refreshTokenId,
-                    UserName = context.Ticket.Identity.Name,
-                    IssuedUtc = DateTime.UtcNow,
-                    ExpiresUtc = DateTime.UtcNow.AddMinutes(30)
-                };
+                Id = refreshTokenId,
+                UserName = context.Ticket.Identity.Name,
+                IssuedUtc = DateTime.UtcNow,
+                ExpiresUtc = DateTime.UtcNow.AddMinutes(30)
+            };
 
-                context.Ticket.Properties.IssuedUtc = token.IssuedUtc;
-                context.Ticket.Properties.ExpiresUtc = token.ExpiresUtc;
+            context.Ticket.Properties.IssuedUtc = token.IssuedUtc;
+            context.Ticket.Properties.ExpiresUtc = token.ExpiresUtc;
 
-                token.ProtectedTicket = context.SerializeTicket();
-                //添加刷新token记录
-                var result = await _repo.AddRefreshToken(token);
+            token.ProtectedTicket = context.SerializeTicket();
+            //添加刷新token记录
+            int addResult = await BzyService.Instance.RefreshTokenService.AddEntityAsync(token);
 
-                if (result)
-                {
-                    context.SetToken(refreshTokenId);
-                }
-
+            if (addResult == 1)
+            {
+                context.SetToken(refreshTokenId);
             }
         }
-        public Task ReceiveAsync(AuthenticationTokenReceiveContext context)
+        public async Task ReceiveAsync(AuthenticationTokenReceiveContext context)
         {
-            throw new NotImplementedException();
+            string tokenId = context.Token;
+            var refreshToken = await BzyService.Instance.RefreshTokenService.QueryEntityAsync(tokenId);
+            if (refreshToken != null)
+            {
+                context.DeserializeTicket(refreshToken.ProtectedTicket);
+                await BzyService.Instance.RefreshTokenService.DeleteEntityAsync(tokenId);
+            }
         }
 
         public void Receive(AuthenticationTokenReceiveContext context)

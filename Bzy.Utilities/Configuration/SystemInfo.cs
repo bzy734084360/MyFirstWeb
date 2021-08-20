@@ -21,12 +21,8 @@ namespace Bzy.Utilities
         /// </summary>
         public static string ServiceFactory = "ServiceFactory";
         /// <summary>
-        /// 阿里云AccessKeyID
+        /// 业务链接数据库
         /// </summary>
-        public static string AliyunAccessKeyID = string.Empty;
-        /// <summary>
-        /// 阿里云AccessKeySecret
-        /// </summary>
-        public static string AliyunAccessKeySecret = string.Empty;
+        public static string BzyDbConnection = string.Empty;
     }
 }

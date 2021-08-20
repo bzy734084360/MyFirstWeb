@@ -11,9 +11,8 @@ namespace Bzy.Utilities
     {
         public static void GetConfig()
         {
-            //阿里云
-            if (ConfigurationManager.AppSettings["AliyunAccessKeyID"] != null)
-                SystemInfo.AliyunAccessKeyID = ConfigurationManager.AppSettings["AliyunAccessKeyID"];
+            if (ConfigurationManager.AppSettings["BzyDbConnection"] != null)
+                SystemInfo.BzyDbConnection = ConfigurationManager.AppSettings["BzyDbConnection"];
         }
     }
 }

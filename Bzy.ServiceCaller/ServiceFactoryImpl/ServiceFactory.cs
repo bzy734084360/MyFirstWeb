@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Bzy.BizLogic.IService;
+using Bzy.BizLogic.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,13 +13,13 @@ namespace Bzy.ServiceCaller
     /// </summary>
     public class ServiceFactory : IServiceFactory
     {
-        ///// <summary>
-        ///// 创建登录服务
-        ///// </summary>
-        ///// <returns>服务接口</returns>
-        //public ILogOnService CreateLogOnService()
-        //{
-        //    return new LogOnService();
-        //}
+        /// <summary>
+        /// 创建Auth刷新Token表服务
+        /// </summary>
+        /// <returns>服务接口</returns>
+        public IRefreshTokenService CreateRefreshTokenService()
+        {
+            return new RefreshTokenService();
+        }
     }
 }

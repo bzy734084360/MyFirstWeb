@@ -193,7 +193,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Entities\RefreshToken.cs" />
     <Compile Include="Entities\UserModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -265,6 +264,14 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bzy.BizLogic\Bzy.BizLogic.csproj">
+      <Project>{5631df6d-08d8-4547-846c-cb04e67419a9}</Project>
+      <Name>Bzy.BizLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bzy.ServiceCaller\Bzy.ServiceCaller.csproj">
+      <Project>{50cd0ad5-7659-46d7-b2f8-3fabe607a2c9}</Project>
+      <Name>Bzy.ServiceCaller</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bzy.Utilities\Bzy.Utilities.csproj">
       <Project>{a75890cb-599b-4b48-8412-cbb34190801c}</Project>
       <Name>Bzy.Utilities</Name>
