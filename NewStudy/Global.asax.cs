@@ -1,4 +1,5 @@
 ﻿using BusinessLayer;
+using Bzy.Utilities;
 using NewStudy.FormStudy;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace NewStudy
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             BusinessSettings.SetBusiness();
+            BaseConfiguration.GetSetting();//初始化配置文件
         }
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
         {

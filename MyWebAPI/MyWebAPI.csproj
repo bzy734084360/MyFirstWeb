@@ -269,6 +269,10 @@
       <Project>{5631df6d-08d8-4547-846c-cb04e67419a9}</Project>
       <Name>Bzy.BizLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bzy.Cache\Bzy.Cache.csproj">
+      <Project>{1913a094-d544-4061-9da9-98e5492f7b36}</Project>
+      <Name>Bzy.Cache</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bzy.ServiceCaller\Bzy.ServiceCaller.csproj">
       <Project>{50cd0ad5-7659-46d7-b2f8-3fabe607a2c9}</Project>
       <Name>Bzy.ServiceCaller</Name>
