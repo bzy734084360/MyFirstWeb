@@ -1,5 +1,5 @@
-﻿using Bzy.BizLogic.BizEntity;
-using Bzy.ServiceCaller.Service;
+﻿using Bzy.BizLogic;
+using Bzy.ServiceCaller;
 using Microsoft.Owin.Security.Infrastructure;
 using System;
 using System.Collections.Concurrent;

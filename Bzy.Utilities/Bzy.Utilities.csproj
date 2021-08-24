@@ -68,16 +68,20 @@
     <Compile Include="Configuration\BaseConfiguration.cs" />
     <Compile Include="Configuration\ConfigurationHelper.cs" />
     <Compile Include="Configuration\SystemInfo.cs" />
+    <Compile Include="Exceptions\ApiCustomException.cs" />
+    <Compile Include="Http\HttpHelper.cs" />
     <Compile Include="Json\JsonHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ConvertHelper.cs" />
+    <Compile Include="CommonUtils\ConvertHelper.cs" />
     <Compile Include="Excel\ColumnEntity.cs" />
     <Compile Include="Excel\ExcelConfig.cs" />
     <Compile Include="Excel\ExcelHelper.cs" />
     <Compile Include="Excel\TemplateMode.cs" />
     <Compile Include="Json\UnixDateTimeConvertor.cs" />
-    <Compile Include="NetHelper.cs" />
-    <Compile Include="SecretHelper.cs" />
+    <Compile Include="CommonUtils\NetHelper.cs" />
+    <Compile Include="CommonUtils\SecretHelper.cs" />
+    <Compile Include="WebUser\IUserData.cs" />
+    <Compile Include="WebUser\UserData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

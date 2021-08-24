@@ -19,8 +19,7 @@ namespace MyWebAPI
                 TokenEndpointPath = new PathString("/token"),//token请求的地址，即http://localhost:端口号/token；
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),//token过期时间；
                 Provider = new SimpleAuthorizationServerProvider(),//提供具体的认证策略;
-                                                                   //刷新token
-                RefreshTokenProvider = new SimpleRefreshTokenProvider()
+                RefreshTokenProvider = new SimpleRefreshTokenProvider()//刷新token
             };
 
             app.UseOAuthAuthorizationServer(OAuthServerOptions);

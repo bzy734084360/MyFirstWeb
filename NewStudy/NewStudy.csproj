@@ -144,9 +144,7 @@
     <Compile Include="Controllers\MVCController.cs" />
     <Compile Include="Controllers\VueController.cs" />
     <Compile Include="FormStudy\HttpFormsAuthentication.cs" />
-    <Compile Include="FormStudy\IUserData.cs" />
     <Compile Include="FormStudy\Principal.cs" />
-    <Compile Include="FormStudy\UserData.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

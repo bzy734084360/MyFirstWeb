@@ -1,6 +1,4 @@
-﻿using Bzy.BizLogic.BizEntity;
-using Bzy.BizLogic.IService;
-using Bzy.Utilities;
+﻿using Bzy.Utilities;
 using Dapper;
 using System;
 using System.Collections.Generic;
@@ -10,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bzy.BizLogic.Service
+namespace Bzy.BizLogic
 {
     public class RefreshTokenService : IRefreshTokenService
     {
@@ -35,7 +33,7 @@ namespace Bzy.BizLogic.Service
         {
             using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
             {
-                return connection.QueryFirstAsync<RefreshTokenEntity>("select *from  RefreshToken where id=@Id", new RefreshTokenEntity() { Id = id });
+                return connection.QueryFirstAsync<RefreshTokenEntity>("select *from  RefreshToken where id=@Id", new { Id = id });
             }
         }
 
@@ -48,7 +46,7 @@ namespace Bzy.BizLogic.Service
         {
             using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
             {
-                return connection.ExecuteAsync("delete ", new RefreshTokenEntity() { Id = id });
+                return connection.ExecuteAsync("delete ", new { Id = id });
             }
         }
     }

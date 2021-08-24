@@ -1,4 +1,4 @@
-﻿using Bzy.BizLogic.IService;
+﻿using Bzy.BizLogic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +17,10 @@ namespace Bzy.ServiceCaller
         /// </summary>
         /// <returns>服务接口</returns>
         IRefreshTokenService CreateRefreshTokenService();
+        /// <summary>
+        /// 创建用户表服务
+        /// </summary>
+        /// <returns>服务接口</returns>
+        IBzyUserService CreateBzyUserService();
     }
 }

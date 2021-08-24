@@ -44,9 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BizEntity\BzyUserEntity.cs" />
     <Compile Include="BizEntity\RefreshTokenEntity.cs" />
+    <Compile Include="IService\IBzyUserService.cs" />
     <Compile Include="IService\IRefreshTokenService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\BzyUserService.cs" />
     <Compile Include="Service\RefreshTokenService.cs" />
   </ItemGroup>
   <ItemGroup />

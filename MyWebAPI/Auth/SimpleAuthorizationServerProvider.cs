@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Bzy.ServiceCaller;
+using Bzy.Utilities;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using System;
@@ -37,26 +39,28 @@ namespace MyWebAPI.Auth
             /* 密码模式 resource owner password credentials模式需要body包含3个参数：
              * grant_type - 必须为password
              * username - 用户名
-             * password - 用户密码*/
-            //无数据库链接 不做验证
-            //using (AuthRepository _repo = new AuthRepository())
-            //{
-            //    IdentityUser user = await _repo.FindUser(context.UserName, context.Password);
-            //    if (user == null)
-            //    {
-            if (string.IsNullOrEmpty(context.Request.ReadFormAsync().Result.Get("version")))
+             * password - 用户密码
+             */
+
+            UserData userData = new UserData() { Id = string.Empty, UserName = string.Empty, UserRole = string.Empty };
+
+            //登录操作（登录信息记录未开发，暂时只做账号密码验证）
+            var userEntity = await BzyService.Instance.BzyUserService.QueryEntityAsync(context.UserName, SecretHelper.AESDecrypt(context.Password));
+            if (userEntity == null)
             {
                 context.SetError("invalid_grant", "用户名或密码无效");
                 return;
             }
-            //    }
-            //}
-
+            else
+            {
+                userData = new UserData() { Id = userEntity.Id, UserName = userEntity.UserName, UserRole = string.Empty };
+            }
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
-            //oAuthIdentity.AddClaim(new Claim(ClaimTypes.UserData, userInfo.ToJson()));//ClaimTypes.UserData 可进行自动用户数据管理
+            //ClaimTypes.UserData 可进行自动用户数据管理
+            identity.AddClaim(new Claim(ClaimTypes.UserData, userData.ToJson()));
             identity.AddClaim(new Claim(ClaimTypes.Role, "user"));
-            identity.AddClaim(new Claim("sub", context.UserName));
+            //拓展字段定义
             var props = new AuthenticationProperties(
                 new Dictionary<string, string> {
                     {
@@ -69,10 +73,9 @@ namespace MyWebAPI.Auth
             var ticket = new AuthenticationTicket(identity, props);
             context.Validated(ticket);
             return;
-            await base.GrantResourceOwnerCredentials(context);
         }
         /*
-         * TokenEndpoint方法将会把Context中的属性加入到token中。
+         * TokenEndpoint方法将会把Context中的AuthenticationProperties属性加入到token中。
          */
         public override Task TokenEndpoint(OAuthTokenEndpointContext context)
         {

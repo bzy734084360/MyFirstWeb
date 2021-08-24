@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace Bzy.BizLogic
 {
     /// <summary>
-    /// 刷新Token
+    /// 用户表
     /// </summary>
-    public class RefreshTokenEntity
+    public class BzyUserEntity
     {
         /// <summary>
-        /// 刷新Token值
+        /// 用户标识
         /// </summary>
         public string Id { get; set; }
         /// <summary>
@@ -20,20 +20,16 @@ namespace Bzy.BizLogic
         /// </summary>
         public string UserName { get; set; }
         /// <summary>
-        /// 用户标识
+        /// 用户密码
         /// </summary>
-        public string UserId { get; set; }
+        public string UserPassword { get; set; }
         /// <summary>
-        /// 发布时间
+        /// 创建时间
         /// </summary>
-        public DateTime IssuedUtc { get; set; }
+        public DateTime CreateTime { get; set; }
         /// <summary>
-        /// 有效时间
+        /// 修改时间
         /// </summary>
-        public DateTime ExpiresUtc { get; set; }
-        /// <summary>
-        /// 受保护的票据标识
-        /// </summary>
-        public string ProtectedTicket { get; set; }
+        public DateTime? ModifiedTime { get; set; }
     }
 }

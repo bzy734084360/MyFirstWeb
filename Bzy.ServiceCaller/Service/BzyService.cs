@@ -1,4 +1,4 @@
-﻿using Bzy.BizLogic.IService;
+﻿using Bzy.BizLogic;
 using Bzy.Utilities;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bzy.ServiceCaller.Service
+namespace Bzy.ServiceCaller
 {
     public class BzyService : BzyServiceFactory
     {
@@ -45,5 +45,9 @@ namespace Bzy.ServiceCaller.Service
         /// 登录服务
         /// </summary>
         public IRefreshTokenService RefreshTokenService => serviceFactory.CreateRefreshTokenService();
+        /// <summary>
+        /// 用户表服务
+        /// </summary>
+        public IBzyUserService BzyUserService => serviceFactory.CreateBzyUserService();
     }
 }

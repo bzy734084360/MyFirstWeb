@@ -50,7 +50,7 @@ namespace NewStudy.Controllers
                 UserData userData = new UserData()
                 {
                     UserName = Account,
-                    UserID = 1,
+                    Id = "1",
                     UserRole = Account == "admin" ? "Admin" : ""
                 };
                 HttpFormsAuthentication.SetAuthenticationCookie(Account, userData, 7);
