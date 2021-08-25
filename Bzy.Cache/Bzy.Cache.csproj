@@ -7,8 +7,8 @@
     <ProjectGuid>{1913A094-D544-4061-9DA9-98E5492F7B36}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BigStarFK.Cache</RootNamespace>
-    <AssemblyName>BigStarFK.Cache</AssemblyName>
+    <RootNamespace>Bzy.Cache</RootNamespace>
+    <AssemblyName>Bzy.Cache</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
