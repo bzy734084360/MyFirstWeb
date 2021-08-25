@@ -31,7 +31,7 @@ namespace Bzy.Utilities
         /// <param name="errormsg"></param>
         /// <param name="errorcode"></param>
         /// <param name="extmsg"></param>
-        public ApiCustomException(string errormsg, int errorcode = 100, string extmsg = "") : base(errormsg)
+        public ApiCustomException(string errormsg, int errorcode = 1001, string extmsg = "") : base(errormsg)
         {
             this.ErrorMsg = errormsg;
             this.ErrorCode = errorcode;

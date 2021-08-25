@@ -12,7 +12,7 @@ namespace Bzy.BizLogic
 {
     /// <summary>
     /// 用户表业务实现
-    /// </summary>
+    /// </summary> 
     public class BzyUserService : IBzyUserService
     {
         /// <summary>
@@ -22,10 +22,11 @@ namespace Bzy.BizLogic
         /// <returns></returns>
         public int AddEntity(BzyUserEntity entity)
         {
+            entity.Id = Guid.NewGuid().ToString();
             using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
             {
-                return connection.Execute(@"INSERT INTO [dbo].[bzy_User]([UserName],[UserPassword],[ModifiedTime])
-VALUES (@UserName,@UserPassword,@ModifiedTime)", entity);
+                return connection.Execute(@"INSERT INTO [dbo].[bzy_User]([Id],[UserName],[UserPassword],[ModifiedTime])
+VALUES (@Id,@UserName,@UserPassword,@ModifiedTime)", entity);
             }
         }
         /// <summary>
@@ -49,7 +50,7 @@ VALUES (@UserName,@UserPassword,@ModifiedTime)", entity);
         {
             using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
             {
-                return connection.Query<BzyUserEntity>(@"select bzy_User where Id=@Id", new { Id = id }).SingleOrDefault();
+                return connection.Query<BzyUserEntity>(@"select*from  bzy_User where Id=@Id", new { Id = id }).SingleOrDefault();
             }
         }
         /// <summary>
@@ -62,7 +63,7 @@ VALUES (@UserName,@UserPassword,@ModifiedTime)", entity);
         {
             using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
             {
-                return connection.QueryFirstAsync<BzyUserEntity>(@"select bzy_User where userName=@userName and userPassword=@userPassword", new { userName, userPassword });
+                return connection.QueryFirstAsync<BzyUserEntity>(@"select *from bzy_User where userName=@userName and userPassword=@userPassword", new { userName, userPassword });
             }
         }
 
@@ -75,7 +76,7 @@ VALUES (@UserName,@UserPassword,@ModifiedTime)", entity);
         {
             using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
             {
-                return connection.Query<BzyUserEntity>(@"select bzy_User where UserName=@UserName", new { UserName = userName }).SingleOrDefault();
+                return connection.Query<BzyUserEntity>(@"select *from  bzy_User where UserName=@UserName", new { UserName = userName }).SingleOrDefault();
             }
         }
 
@@ -88,7 +89,7 @@ VALUES (@UserName,@UserPassword,@ModifiedTime)", entity);
         {
             using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
             {
-                return connection.Query<BzyUserEntity>(@"select bzy_User where Id=@Id", ids).ToList();
+                return connection.Query<BzyUserEntity>(@"select*from  bzy_User where Id=@Id", ids).ToList();
             }
         }
         /// <summary>

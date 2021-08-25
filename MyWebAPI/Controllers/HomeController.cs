@@ -9,6 +9,9 @@ using System.Web.Http;
 
 namespace MyWebAPI.Controllers
 {
+    /// <summary>
+    /// 首页测试
+    /// </summary>
     [RoutePrefix("api/Home")]
     public class HomeController : ApiController
     {

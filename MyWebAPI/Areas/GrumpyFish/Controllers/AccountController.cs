@@ -30,7 +30,7 @@ namespace MyWebAPI.Areas.GrumpyFish.Controllers
                 throw new ApiCustomException("参数异常");
 
             var userEntity = BzyService.Instance.BzyUserService.QueryEntityByRegister(model.UserName);
-            if (userEntity == null)
+            if (userEntity != null)
                 throw new ApiCustomException("账号已存在");
 
             BzyUserEntity bzyUserEntity = new BzyUserEntity

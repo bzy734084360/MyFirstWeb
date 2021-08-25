@@ -31,12 +31,25 @@ namespace MyWebAPI.App_Start.Filter
                  * 抛出自定义异常
                  */
                 var exception = (ApiCustomException)actionExecutedContext.Exception;
-                var result = new
+                object result = null;
+                if (string.IsNullOrEmpty(exception.ExtMsg))
                 {
-                    code = exception.ErrorCode,
-                    message = actionExecutedContext.Exception.Message,
-                    expand = exception.ExtMsg
-                };
+                    result = new
+                    {
+                        code = exception.ErrorCode,
+                        message = actionExecutedContext.Exception.Message,
+                    };
+                }
+                else
+                {
+                    result = new
+                    {
+                        code = exception.ErrorCode,
+                        message = actionExecutedContext.Exception.Message,
+                        expand = exception.ExtMsg
+                    };
+                }
+
 
                 actionExecutedContext.Response = new HttpResponseMessage
                 {

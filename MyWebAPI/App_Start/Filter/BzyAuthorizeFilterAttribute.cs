@@ -14,6 +14,10 @@ namespace MyWebAPI.App_Start.Filter
     /// </summary>
     public class BzyAuthorizeFilterAttribute : AuthorizeAttribute
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="actionContext"></param>
         public override void OnAuthorization(HttpActionContext actionContext)
         {
             if (actionContext.ActionDescriptor.GetCustomAttributes<AllowAnonymousAttribute>().Any()

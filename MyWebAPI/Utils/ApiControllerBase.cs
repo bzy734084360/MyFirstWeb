@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace MyWebAPI.Utils
 {
@@ -43,11 +44,13 @@ namespace MyWebAPI.Utils
         /// <summary>
         /// 定义接口统一出参
         /// </summary>
+        /// <param name="message"></param>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public HttpResponseMessage ToResMsgJson(object obj = null)
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public HttpResponseMessage ToResMsgJson(string message, object obj = null)
         {
-            var result = new { code = 200, data = obj };
+            var result = new { code = 200, message, data = obj };
             var resultJson = result.ToApiJson();
 
             return new HttpResponseMessage

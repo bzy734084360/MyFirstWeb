@@ -13,6 +13,9 @@ using System.Web.Http;
 
 namespace MyWebAPI.Areas.GrumpyFish.Controllers
 {
+    /// <summary>
+    /// 用户相关服务
+    /// </summary>
     [RoutePrefix("api/User")]
     public class UserController : ApiControllerBase
     {
@@ -72,7 +75,7 @@ namespace MyWebAPI.Areas.GrumpyFish.Controllers
             {
                 throw new ApiCustomException("解析token异常", 100);
             }
-            return ToResMsgJson(new { access_token = "Bearer " + token });
+            return ToResMsgJson("获取成功", new { access_token = "Bearer " + token });
         }
     }
 }
