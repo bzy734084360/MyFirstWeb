@@ -107,7 +107,6 @@ var SwaggerTranslator = (function () {
 
     return {
         Translator: function () {
-            document.title = "BigStarFK.WebAPI 接口在线";
             $('body').append('<style type="text/css">.controller-summary{color:#10a54a !important;word-break:keep-all;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:250px;text-align:right;cursor:default;} </style>');
             $("#logo").html("WebAPI接口描述").attr("href", "/Home/Index");
             //设置控制器描述
