@@ -15,12 +15,12 @@ namespace MyWebAPI
     {
         public void Configuration(IAppBuilder app)
         {
-            var config = new HttpConfiguration();
-            WebApiConfig.Register(config);
+            //var config = new HttpConfiguration();
+            //WebApiConfig.Register(config);
             ConfigureOAuth(app);
 
-            //注册配置
-            app.UseWebApi(config);
+            ////注册配置
+            //app.UseWebApi(config);
         }
 
     }

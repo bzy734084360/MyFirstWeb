@@ -1,4 +1,6 @@
-﻿using Bzy.Utilities;
+﻿using Bzy.BizLogic;
+using Bzy.ServiceCaller;
+using Bzy.Utilities;
 using MyWebAPI.Utils;
 using Newtonsoft.Json.Linq;
 using System;
@@ -14,6 +16,10 @@ namespace MyWebAPI.Areas.GrumpyFish.Controllers
     [RoutePrefix("api/User")]
     public class UserController : ApiControllerBase
     {
+        /// <summary>
+        /// 获取token示例
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public HttpResponseMessage GetLoginToken()
         {
