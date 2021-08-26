@@ -12,7 +12,7 @@ namespace NewStudy.App_Start
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var user = (HttpContext.Current.User as Principal).UserData as UserData;
-            if (user == null || user.UserName != "admin")
+            if (user == null || user.UserRole != "Admin")
             {
                 filterContext.Result = new ContentResult()
                 {

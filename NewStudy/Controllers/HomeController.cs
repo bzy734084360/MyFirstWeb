@@ -13,10 +13,11 @@ namespace NewStudy.Controllers
     public class HomeController : BaseController
     {
         // GET: Home
-        [AllowAnonymous]
+        [HeaderFooterFilter]
         public ActionResult Index()
         {
-            return View();
+            //BaseViewModel baseViewModel = new BaseViewModel();
+            return View(new BaseViewModel());
         }
 
         /// <summary>

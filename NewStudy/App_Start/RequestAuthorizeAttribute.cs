@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Bzy.Utilities;
+using NewStudy.WebUtilities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -62,8 +64,11 @@ namespace NewStudy.App_Start
             }
             else
             {
+                //创建cookie
+                CookieHelper.DelCookie("CallBackUrl");
+                CookieHelper.WriteCookie("CallBackUrl", SecretHelper.AESEncrypt(request.Url.AbsoluteUri), 600);
                 //跳转到登录页面
-                string loginUrl = FormsAuthentication.LoginUrl + "?ReturnUrl=" + request.Url.AbsoluteUri;
+                string loginUrl = FormsAuthentication.LoginUrl;
                 context.Result = new RedirectResult(loginUrl);
             }
         }

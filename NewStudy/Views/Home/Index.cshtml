@@ -1,15 +1,23 @@
 ﻿@{
-    Layout = "~/Views/Shared/Layui/_Layout.cshtml";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
 }
-<!DOCTYPE html>
-<div>
-    <button onclick="GoLayuiHome()">跳转Layui页面</button>
-    <button onclick="GoVueHome()">跳转Vue页面</button>
-    <button onclick="GoMvcStudy()">七天MVC</button>
-    <button onclick="GoMvcAreaStudy()">七天MVC(Area)</button>
-    <button onclick="GoLogin()">登录</button>
-</div>
-<script>
+
+@section TitleSection{
+    首页
+}
+@section ContentBody{
+    <div>
+        <ul>
+            <li><button onclick="GoLayuiHome()">跳转Layui页面</button></li>
+            <li><button onclick="GoVueHome()">跳转Vue页面</button></li>
+            <li><button onclick="GoMvcStudy()">七天MVC</button></li>
+            <li><button onclick="GoMvcAreaStudy()">七天MVC(Area)</button></li>
+            <li><button onclick="GoLogin()">登录</button></li>
+        </ul>
+    </div>
+}
+@section Scripts{
+    <script>
     function GoLayuiHome() {
         window.location.href ='@Url.Content("~/layui/Home")';
     }
@@ -25,4 +33,5 @@
     function GoLogin() {
         window.location.href ='@Url.Content("~/FormStudy/Login")';
     }
-</script>
+    </script>
+}

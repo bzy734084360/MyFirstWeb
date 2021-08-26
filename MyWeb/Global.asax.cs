@@ -1,4 +1,3 @@
-﻿using MyWeb.FormStudy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +16,6 @@ namespace MyWeb
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-        }
-        protected void Application_AuthenticateRequest(object sender, EventArgs e)
-        {
-            HttpContext.Current.User = HttpFormsAuthentication.TryParsePrincipal<UserData>(HttpContext.Current);
         }
     }
 }

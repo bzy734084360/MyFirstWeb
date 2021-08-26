@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("MyWeb")]
-[assembly: AssemblyCopyright("版权所有(C)  2020")]
+[assembly: AssemblyCopyright("版权所有(C)  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于 typelib 的 ID
-[assembly: Guid("7084a078-5862-4b44-8a82-eaade87102d5")]
+[assembly: Guid("14b897a9-7855-4bba-aadc-56a105cc1703")]
 
 // 程序集的版本信息由下列四个值组成:
 //

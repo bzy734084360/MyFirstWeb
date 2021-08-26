@@ -1,4 +1,5 @@
-﻿using Bzy.Utilities;
+﻿using Bzy.ServiceCaller;
+using Bzy.Utilities;
 using NewStudy.FormStudy;
 using NewStudy.Model;
 using NewStudy.WebUtilities;
@@ -23,9 +24,12 @@ namespace NewStudy.Controllers
         public ActionResult Login()
         {
             string returnUrl = string.Empty;
-            if (Request["ReturnUrl"] != null)
+            //创建cookie
+            string callBackUrl = CookieHelper.GetCookie("CallBackUrl");
+            if (!string.IsNullOrEmpty(callBackUrl))
             {
-                returnUrl = Request["ReturnUrl"];
+                returnUrl = SecretHelper.AESDecrypt(callBackUrl);
+                CookieHelper.DelCookie("CallBackUrl");
             }
             ViewBag.ReturnUrl = returnUrl;
             return View();
@@ -44,14 +48,15 @@ namespace NewStudy.Controllers
             {
                 return Content("5");
             }
-            //姓名正确跳转
-            if ((Account == "admin" && Password == "1234") || (Account == "test" && Password == "1234"))
+            //连接数据库校验用户
+            var userEntity = BzyService.Instance.BzyUserService.QueryEntityByRegister(Account);
+            if (userEntity != null)
             {
                 UserData userData = new UserData()
                 {
-                    UserName = Account,
-                    Id = "1",
-                    UserRole = Account == "admin" ? "Admin" : ""
+                    UserName = userEntity.UserName,
+                    Id = userEntity.Id,
+                    UserRole = Account == "grumpyfish" ? "Admin" : ""
                 };
                 HttpFormsAuthentication.SetAuthenticationCookie(Account, userData, 7);
                 GetOnline(Account);
