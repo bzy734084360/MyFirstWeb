@@ -21,6 +21,7 @@ namespace MyWebAPI
 
             ////注册配置
             //app.UseWebApi(config);
+
         }
 
     }

@@ -13,6 +13,9 @@ namespace MyWeb
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //添加支持特性定义的路由
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
