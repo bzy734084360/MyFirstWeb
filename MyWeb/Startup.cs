@@ -10,6 +10,5 @@ namespace MyWeb
         {
             ConfigureAuth(app);
         }
-
     }
 }

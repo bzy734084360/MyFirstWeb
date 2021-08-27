@@ -20,7 +20,7 @@ namespace MyWebAPI.Areas.GrumpyFish.Controllers
     public class UserController : ApiControllerBase
     {
         /// <summary>
-        /// 获取token示例
+        ///  HttpHelper 获取token示例
         /// </summary>
         /// <returns></returns>
         [HttpPost]
@@ -76,6 +76,16 @@ namespace MyWebAPI.Areas.GrumpyFish.Controllers
                 throw new ApiCustomException("解析token异常", 100);
             }
             return ToResMsgJson("获取成功", new { access_token = "Bearer " + token });
+        }
+        /// <summary>
+        /// 查询用户信息
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public HttpResponseMessage GetUser()
+        {
+            var userEntity = BzyService.Instance.BzyUserService.QueryEntity(CurrentUser.Id);
+            return ToResMsgJson(userEntity == null ? "未找到用户" : "查询成功", userEntity);
         }
     }
 }

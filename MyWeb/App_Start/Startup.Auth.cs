@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
+using MyWeb.Provider;
 using Owin;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,13 @@ namespace MyWeb
             {
                 AllowInsecureHttp = true,
                 AuthorizeEndpointPath = new PathString("/oauth2/authorize"),
-                TokenEndpointPath = new PathString("/oauth2/token")
+                TokenEndpointPath = new PathString("/oauth2/token"),
+                Provider = new BzyOAuthAuthorizationServerProvider(),
+                AuthorizationCodeProvider = new AuthorizationCodeProvider(),
+            });
+
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions()
+            {
             });
         }
     }

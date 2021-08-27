@@ -203,10 +203,8 @@
     <Compile Include="Areas\GrumpyFish\Data\AccountModel.cs" />
     <Compile Include="Areas\GrumpyFish\Data\UserModel.cs" />
     <Compile Include="Areas\GrumpyFish\GrumpyFishAreaRegistration.cs" />
-    <Compile Include="Auth\AuthContext.cs" />
-    <Compile Include="Auth\AuthRepository.cs" />
-    <Compile Include="Auth\SimpleAuthorizationServerProvider.cs" />
-    <Compile Include="Auth\SimpleRefreshTokenProvider.cs" />
+    <Compile Include="Provider\SimpleAuthorizationServerProvider.cs" />
+    <Compile Include="Provider\SimpleRefreshTokenProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomePageController.cs" />
     <Compile Include="Entities\UserModel.cs" />
@@ -256,6 +254,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\GrumpyFish\Views\Shared\" />
+    <Folder Include="Auth\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

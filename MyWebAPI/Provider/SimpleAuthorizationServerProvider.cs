@@ -13,11 +13,11 @@ using System.Web;
 namespace MyWebAPI.Auth
 {
     /// <summary>
-    /// 令牌认证（密码模式（resource owner password credentials））
+    /// 令牌认证
     /// </summary>
     public class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
-        /*
+        /* (授权码模式身份验证)
          * ValidateClientAuthentication方法用来对third party application 认证，
          * 具体的做法是为third party application颁发appKey和appSecrect，
          * 在本例中我们省略了颁发appKey和appSecrect的环节，我们认为所有的third party application都是合法的，
@@ -29,6 +29,7 @@ namespace MyWebAPI.Auth
         }
 
         /*
+         * （密码模式（resource owner password credentials））
          * GrantResourceOwnerCredentials方法则是resource owner password credentials模式的重点，
          * 由于客户端发送了用户的用户名和密码，所以我们在这里验证用户名和密码是否正确，
          * 后面的代码采用了ClaimsIdentity认证方式，其实我们可以把他当作一个NameValueCollection看待。
