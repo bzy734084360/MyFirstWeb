@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "文章列表";
+}
+
+<h2>文章列表</h2>
+
+<ul>
+    @foreach (var item in ViewBag.posts)
+    {
+        <li>@Html.ActionLink((string)item.Title, "PostDetail", new { id = item.Id })</li>
+    }
+</ul>

@@ -17,7 +17,7 @@ namespace MyWeb.Provider
         private readonly ConcurrentDictionary<string, string> _authorizationCodes =
             new ConcurrentDictionary<string, string>(StringComparer.Ordinal);
         /*
-         * 创建授权码？
+         * 创建授权码
          */
         public void Create(AuthenticationTokenCreateContext context)
         {
@@ -25,7 +25,7 @@ namespace MyWeb.Provider
             _authorizationCodes[context.Token] = context.SerializeTicket();
         }
         /*
-         * 移除授权码？
+         * 移除授权码
          */
         public void Receive(AuthenticationTokenReceiveContext context)
         {
