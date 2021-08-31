@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace MyBlog.Models
+namespace BlogModel
 {
     /// <summary>
     /// 文章Model
@@ -13,7 +14,7 @@ namespace MyBlog.Models
         /// <summary>
         /// 文章标识
         /// </summary>
-        public int Id { get; set; }
+        public int ID { get; set; }
         /// <summary>
         /// 文章标题
         /// </summary>

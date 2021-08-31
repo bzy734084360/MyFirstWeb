@@ -125,7 +125,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\PostListViewModel.cs" />
+    <Compile Include="Models\PostViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +183,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BlogBusinessLogic\BlogBusinessLogic.csproj">
+      <Project>{1c43cf9d-94e3-4ab3-b70d-109ba3ae0ac3}</Project>
+      <Name>BlogBusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BlogModel\BlogModel.csproj">
+      <Project>{551c11b6-68e3-4b8a-b0dd-81f61d783715}</Project>
+      <Name>BlogModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bzy.Utilities\Bzy.Utilities.csproj">
+      <Project>{a75890cb-599b-4b48-8412-cbb34190801c}</Project>
+      <Name>Bzy.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

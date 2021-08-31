@@ -1,4 +1,5 @@
-﻿using MyBlog.Models;
+﻿using BlogBusinessLogic;
+using MyBlog.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,52 +10,29 @@ namespace MyBlog.Controllers
 {
     public class PostController : Controller
     {
-        private static List<Post> posts = new List<Post>()
-        {
-            new Post(){
-                Id=1,Author="暴走鱼",
-                Content="文章1的内容",
-                CreateDate=DateTime.Now,
-                ModifyDate=DateTime.Now,
-                Title="文章1"
-            },
-            new Post(){
-                Id=1,Author="暴走鱼",
-                Content="文章2的内容",
-                CreateDate=DateTime.Now,
-                ModifyDate=DateTime.Now,
-                Title="文章2"
-            },
-            new Post(){
-                Id=1,Author="暴走鱼",
-                Content="文章3的内容",
-                CreateDate=DateTime.Now,
-                ModifyDate=DateTime.Now,
-                Title="文章3"
-            },
-            new Post(){
-                Id=1,Author="暴走鱼",
-                Content="文章4的内容",
-                CreateDate=DateTime.Now,
-                ModifyDate=DateTime.Now,
-                Title="文章4"
-            },
-            new Post(){
-                Id=1,Author="暴走鱼",
-                Content="文章5的内容",
-                CreateDate=DateTime.Now,
-                ModifyDate=DateTime.Now,
-                Title="文章5"
-            },
-        };
         /// <summary>
         /// 文章列表
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
         {
-            ViewBag.Posts = posts;
-            return View();
+            var posts = new BlogManager().GetAllPosts().Select(t => new PostViewModel()
+            {
+                Author = t.Author,
+                Content = t.Content,
+                CreateDate = t.CreateDate,
+                ID = t.ID,
+                ModifyDate = t.ModifyDate,
+                Title = t.Title
+            }).ToList();
+            var postListViewModel = new PostListViewModel()
+            {
+                Count = posts.Count,
+                PageCount = 1,
+                Pages = 1,
+                Posts = posts
+            };
+            return View(postListViewModel);
         }
         /// <summary>
         /// 文章详情
@@ -62,13 +40,21 @@ namespace MyBlog.Controllers
         /// <returns></returns>
         public ActionResult PostDetail(int id)
         {
-            var post = posts.Where(t => t.Id == id).FirstOrDefault();
+            var post = new BlogManager().GetPostById(id);
             if (post == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Post = post;
-            return View();
+            var postViewModel = new PostViewModel()
+            {
+                Author = post.Author,
+                Content = post.Content,
+                CreateDate = post.CreateDate,
+                ModifyDate = post.ModifyDate,
+                ID = post.ID,
+                Title = post.Title
+            };
+            return View(postViewModel);
         }
     }
 }

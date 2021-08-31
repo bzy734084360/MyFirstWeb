@@ -1,13 +1,14 @@
-﻿
+﻿@using MyBlog.Models
+@model PostListViewModel
 @{
     ViewBag.Title = "文章列表";
 }
-
 <h2>文章列表</h2>
 
 <ul>
-    @foreach (var item in ViewBag.posts)
+    @foreach (var post in Model.Posts)
     {
-        <li>@Html.ActionLink((string)item.Title, "PostDetail", new { id = item.Id })</li>
+        <li>@Html.ActionLink(post.Title, "PostDetail", new { id = post.ID })</li>
     }
 </ul>
+<p>显示当前第 @Model.PageCount 页，共有 @Model.Pages 页 (记录总数：@Model.Count)。 </p>

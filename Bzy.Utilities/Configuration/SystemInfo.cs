@@ -23,6 +23,6 @@ namespace Bzy.Utilities
         /// <summary>
         /// 业务链接数据库
         /// </summary>
-        public static string BzyDbConnection = string.Empty;
+        public static string BzyDbConnection = "";
     }
 }
