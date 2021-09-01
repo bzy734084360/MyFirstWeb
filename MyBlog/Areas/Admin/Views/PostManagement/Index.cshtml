@@ -1,0 +1,31 @@
+﻿@using MyBlog.Areas.Admin.Models
+@model PostMaintainListViewModel
+@{
+    ViewBag.Title = "文章管理列表";
+}
+
+<h2>文章列表</h2>
+@Html.ActionLink("添加新的文章", "Insert")
+<ul>
+    @foreach (var item in Model.Posts)
+    {
+        <li>@Html.ActionLink(item.Title, "Update", new { id = item.ID }) 操作：<a onclick="deletePost(@item.ID)">删除</a></li>
+    }
+</ul>
+<p>显示当前第 @Model.PageCount 页，共有 @Model.Pages 页 （记录总数: @Model.Count）。</p>
+
+
+@section scripts{
+    <script>
+        function deletePost(id) {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/PostManagement/Delete",
+                dataType: "json",
+                data: { Id: id },
+                success: function (rs) { }
+            });
+        };
+    </script>
+}
+
