@@ -35,5 +35,13 @@ namespace BlogModel
         /// 发布者
         /// </summary>
         public string Author { get; set; }
+        /// <summary>
+        /// 是否发布
+        /// </summary>
+        public bool IsPublish { get; set; }
+        /// <summary>
+        /// 点击量
+        /// </summary>
+        public int ClickCount { get; set; }
     }
 }

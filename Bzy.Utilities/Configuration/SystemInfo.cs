@@ -23,6 +23,6 @@ namespace Bzy.Utilities
         /// <summary>
         /// 业务链接数据库
         /// </summary>
-        public static string BzyDbConnection = "";
+        public static string BzyDbConnection = "Data Source=47.106.90.13;Initial Catalog=GrumpyFish;Persist Security Info=True;User ID=sa;Password=yF1@112233445";
     }
 }

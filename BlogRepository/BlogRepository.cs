@@ -87,5 +87,31 @@ namespace BlogRepository
                 return dbcontext.Posts.Find(id);
             }
         }
+
+        public void Update(Post post)
+        {
+            using (var dbcontext = new BlogContext())
+            {
+                dbcontext.Entry(post).State = System.Data.Entity.EntityState.Modified;
+                dbcontext.SaveChanges();
+            }
+        }
+
+        public void Insert(Post post)
+        {
+            using (var dbcontext = new BlogContext())
+            {
+                dbcontext.Posts.Add(post);
+                dbcontext.SaveChanges();
+            }
+        }
+        public void Delete(Post post)
+        {
+            using (var dbcontext = new BlogContext())
+            {
+                dbcontext.Posts.Remove(post);
+                dbcontext.SaveChanges();
+            }
+        }
     }
 }

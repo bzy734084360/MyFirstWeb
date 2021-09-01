@@ -19,5 +19,17 @@ namespace BlogBusinessLogic
         {
             return repository.GetById(id);
         }
+        public void UpdatePost(Post post)
+        {
+            repository.Update(post);
+        }
+        public void Insert(Post post)
+        {
+            repository.Insert(post);
+        }
+        public void Delete(Post post)
+        {
+            repository.Delete(post);
+        }
     }
 }
