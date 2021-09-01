@@ -80,7 +80,7 @@ namespace MyBlog.Areas.Admin.Controllers
         {
             var post = manager.GetPostById(id);
             manager.Delete(post);
-            return RedirectToAction("Index");
+            return Content("1");
         }
     }
 }

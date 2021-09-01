@@ -23,7 +23,11 @@
                 url: "/Admin/PostManagement/Delete",
                 dataType: "json",
                 data: { Id: id },
-                success: function (rs) { }
+                success: function (rs) {
+                    if (rs == "1") {
+                        window.location.href = '@Url.Content("~/Admin/PostManagement")';
+                    }
+                }
             });
         };
     </script>
