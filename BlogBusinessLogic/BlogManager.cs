@@ -29,14 +29,7 @@ namespace BlogBusinessLogic
         }
         public void Delete(Post post)
         {
-            try
-            {
-                repository.Delete(post);
-            }
-            catch (Exception ex)
-            {
-
-            }
+            repository.Delete(post);
         }
     }
 }

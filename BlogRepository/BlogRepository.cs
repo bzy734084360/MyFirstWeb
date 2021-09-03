@@ -110,7 +110,6 @@ namespace BlogRepository
             using (var dbcontext = new BlogContext())
             {
                 dbcontext.Entry(post).State = System.Data.Entity.EntityState.Deleted;
-                //dbcontext.Posts.Remove(post);
                 dbcontext.SaveChanges();
             }
         }
