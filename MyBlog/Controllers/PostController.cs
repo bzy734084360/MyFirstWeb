@@ -10,13 +10,18 @@ namespace MyBlog.Controllers
 {
     public class PostController : Controller
     {
+        private BlogManager manager;
+        public PostController(BlogManager blogManager)
+        {
+            manager = blogManager;
+        }
         /// <summary>
         /// 文章列表
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
         {
-            var posts = new BlogManager().GetAllPosts().Select(t => new PostViewModel()
+            var posts = manager.GetAllPosts().Select(t => new PostViewModel()
             {
                 Author = t.Author,
                 Content = t.Content,
@@ -40,7 +45,7 @@ namespace MyBlog.Controllers
         /// <returns></returns>
         public ActionResult PostDetail(int id)
         {
-            var post = new BlogManager().GetPostById(id);
+            var post = manager.GetPostById(id);
             if (post == null)
             {
                 return HttpNotFound();

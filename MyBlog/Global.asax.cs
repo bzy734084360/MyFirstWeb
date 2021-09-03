@@ -18,6 +18,13 @@ namespace MyBlog
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             BaseConfiguration.GetSetting();//初始化配置文件
+
+            //替换容器的创建
+            var container = MyBlogContainer.GetContainer();
+            //解析器的替换
+            //DependencyResolver.SetResolver(new MyBlogDependencyResolver(container));
+            //替换控制器工厂
+            ControllerBuilder.Current.SetControllerFactory(new MyBlogControllerFactory(container));
         }
     }
 }
