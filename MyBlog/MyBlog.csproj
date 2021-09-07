@@ -183,6 +183,7 @@
     <Compile Include="Areas\Admin\Controllers\PostManagementController.cs" />
     <Compile Include="Areas\Admin\Models\PostMaintainListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\PostMaintainViewModel.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DirectRoutingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -191,12 +192,15 @@
     </Compile>
     <Compile Include="Identity\BlogIdentityDbContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PostListViewModel.cs" />
     <Compile Include="Models\PostViewModel.cs" />
+    <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="MyBlogContainer.cs" />
     <Compile Include="MyBlogControllerFactory.cs" />
     <Compile Include="MyBlogDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -244,6 +248,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\Post\PostDetail.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

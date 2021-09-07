@@ -13,6 +13,7 @@ namespace MyBlog.Controllers
         private BlogManager manager;
         public PostController(BlogManager blogManager)
         {
+            //通过autofac 注入
             manager = blogManager;
         }
         /// <summary>

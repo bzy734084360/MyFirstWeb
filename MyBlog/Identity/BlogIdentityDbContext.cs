@@ -10,12 +10,18 @@ namespace MyBlog.Identity
 {
     public class BlogIdentityDbContext : IdentityDbContext<IdentityUser>
     {
-        public BlogIdentityDbContext() : base(SystemInfo.BzyDbConnection)
+        public BlogIdentityDbContext() : base(SystemInfo.BzyDbConnection, throwIfV1Schema: false)
+        {
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<BlogIdentityDbContext, Migrations.Configuration>());
-            //Database.SetInitializer();
-            ////添加主键
-            //modelBuilder.Entity<Post>().HasKey(t => t.ID);
+            //添加主键
+            modelBuilder.Entity<IdentityUserRole>().HasKey(t => t.RoleId).HasKey(t => t.UserId);
+            modelBuilder.Entity<IdentityUserLogin>().HasKey(t => t.UserId);
+
         }
+
     }
 }
