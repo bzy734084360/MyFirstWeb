@@ -177,6 +177,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\Filter\ClaimsBaseAuthorizeAttribute.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
@@ -185,6 +186,7 @@
     <Compile Include="Areas\Admin\Models\PostMaintainListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\PostMaintainViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CookieProtectController.cs" />
     <Compile Include="Controllers\DirectRoutingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -251,6 +253,7 @@
     <Content Include="Views\Post\PostDetail.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\CookieProtect\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

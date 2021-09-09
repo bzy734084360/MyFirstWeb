@@ -84,20 +84,24 @@ namespace MyBlog.Controllers
         [HttpPost]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, false, shouldLockout: false);
-            switch (result)
+            if (ModelState.IsValid)
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("用户被锁定");
-                //case SignInStatus.RequiresVerification:
-                //    break;
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "用户名或密码无效");
-                    return View(model);
+                var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, false, shouldLockout: false);
+                switch (result)
+                {
+                    case SignInStatus.Success:
+                        return RedirectToLocal(returnUrl);
+                    case SignInStatus.LockedOut:
+                        return View("用户被锁定");
+                    //case SignInStatus.RequiresVerification:
+                    //    break;
+                    case SignInStatus.Failure:
+                    default:
+                        ModelState.AddModelError("", "用户名或密码无效");
+                        return View(model);
+                }
             }
+            return View(model);
         }
 
         /// <summary>
