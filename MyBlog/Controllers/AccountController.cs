@@ -94,8 +94,8 @@ namespace MyBlog.Controllers
                         return RedirectToLocal(returnUrl);
                     case SignInStatus.LockedOut:
                         return View("用户被锁定");
-                    //case SignInStatus.RequiresVerification:
-                    //    break;
+                    case SignInStatus.RequiresVerification:
+                        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
                     case SignInStatus.Failure:
                     default:
                         ModelState.AddModelError("", "用户名或密码无效");
@@ -105,6 +105,12 @@ namespace MyBlog.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 第三方登录跳转
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -113,7 +119,11 @@ namespace MyBlog.Controllers
             // 请求重定向到外部登录提供程序
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
-
+        /// <summary>
+        /// 第三方登录回调
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
@@ -134,7 +144,7 @@ namespace MyBlog.Controllers
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    //双子验证
+                    //双因子验证
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
                 case SignInStatus.Failure:
                 default:
@@ -144,6 +154,12 @@ namespace MyBlog.Controllers
                     return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
         }
+        /// <summary>
+        /// 第三方登录注册
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -179,6 +195,99 @@ namespace MyBlog.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 验证码发送页面
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <param name="rememberMe"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
+        {
+            var userId = await SignInManager.GetVerifiedUserIdAsync();
+            if (userId == null)
+            {
+                return View("Error");
+            }
+            var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
+            var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
+            return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
+        }
+
+        /// <summary>
+        /// 发送验证码
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> SendCode(SendCodeViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            // 生成令牌并发送该令牌
+            if (!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
+            {
+                return View("Error");
+            }
+            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+        }
+
+        /// <summary>
+        /// 输入验证码页面
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <param name="returnUrl"></param>
+        /// <param name="rememberMe"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
+        {
+            // 要求用户已通过使用用户名/密码或外部登录名登录
+            if (!await SignInManager.HasBeenVerifiedAsync())
+            {
+                return View("Error");
+            }
+            return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
+        }
+
+        /// <summary>
+        /// 验证码校验
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            // 以下代码可以防范双重身份验证代码遭到暴力破解攻击。
+            // 如果用户输入错误代码的次数达到指定的次数，则会将
+            // 该用户帐户锁定指定的时间。
+            // 可以在 IdentityConfig 中配置帐户锁定设置
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return RedirectToLocal(model.ReturnUrl);
+                case SignInStatus.LockedOut:
+                    return View("Lockout");
+                case SignInStatus.Failure:
+                default:
+                    ModelState.AddModelError("", "代码无效。");
+                    return View(model);
+            }
+        }
+
 
 
         /// <summary>
@@ -206,7 +315,8 @@ namespace MyBlog.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        // Used for XSRF protection when adding external logins
+
+
         private const string XsrfKey = "XsrfId";
 
         internal class ChallengeResult : HttpUnauthorizedResult

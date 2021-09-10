@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -19,6 +20,13 @@ namespace MyBlog
         public Task SendAsync(IdentityMessage message)
         {
             // 在此处插入电子邮件服务可发送电子邮件。
+            FileStream fs = new FileStream(@"D:\yf\tempData\EmailMsg.txt", FileMode.OpenOrCreate);
+            StreamWriter sw = new StreamWriter(fs);
+            sw.WriteLine(message.Subject);
+            sw.WriteLine(message.Destination);
+            sw.WriteLine(message.Body);
+            sw.Close();
+            fs.Close();
             return Task.FromResult(0);
         }
     }
@@ -28,6 +36,13 @@ namespace MyBlog
         public Task SendAsync(IdentityMessage message)
         {
             // 在此处插入 SMS 服务可发送短信。
+            FileStream fs = new FileStream(@"D:\yf\tempData\SmsMsg.txt", FileMode.OpenOrCreate);
+            StreamWriter sw = new StreamWriter(fs);
+            sw.WriteLine(message.Subject);
+            sw.WriteLine(message.Destination);
+            sw.WriteLine(message.Body);
+            sw.Close();
+            fs.Close();
             return Task.FromResult(0);
         }
     }
@@ -67,14 +82,14 @@ namespace MyBlog
 
             // 注册双重身份验证提供程序。此应用程序使用手机和电子邮件作为接收用于验证用户的代码的一个步骤
             // 你可以编写自己的提供程序并将其插入到此处。
-            manager.RegisterTwoFactorProvider("电话代码", new PhoneNumberTokenProvider<ApplicationUser>
+            manager.RegisterTwoFactorProvider("手机信息", new PhoneNumberTokenProvider<ApplicationUser>
             {
-                MessageFormat = "你的安全代码是 {0}"
+                MessageFormat = "您登录的验证码是{0}"
             });
-            manager.RegisterTwoFactorProvider("电子邮件代码", new EmailTokenProvider<ApplicationUser>
+            manager.RegisterTwoFactorProvider("邮件信息", new EmailTokenProvider<ApplicationUser>
             {
-                Subject = "安全代码",
-                BodyFormat = "你的安全代码是 {0}"
+                Subject = "My Blog 登陆验证信息",
+                BodyFormat = "您登录的验证码是{0}"
             });
             manager.EmailService = new EmailService();
             manager.SmsService = new SmsService();

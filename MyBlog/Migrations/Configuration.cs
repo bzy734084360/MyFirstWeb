@@ -10,6 +10,7 @@ namespace MyBlog.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            //AutomaticMigrationDataLossAllowed = true;//×Ô¶¯ÉýÇ¨
         }
 
         protected override void Seed(MyBlog.Identity.BlogIdentityDbContext context)
