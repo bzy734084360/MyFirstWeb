@@ -34,7 +34,7 @@ namespace MVC5
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // 使应用程序可以在双重身份验证过程中验证第二因素时暂时存储用户信息。
@@ -46,9 +46,9 @@ namespace MVC5
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // 取消注释以下行可允许使用第三方登录提供程序登录
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseMicrosoftAccountAuthentication(
+                clientId: "da85c23c-b723-446f-9e98-eea57c5bbfb5",
+                clientSecret: "d_Tw3_jXBUJ26M.Rvhg-l8w-8qylIMvC~2");
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",

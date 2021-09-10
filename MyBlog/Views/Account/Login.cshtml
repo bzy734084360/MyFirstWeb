@@ -1,4 +1,5 @@
 ﻿@using MyBlog.Models
+@using Microsoft.Owin.Security
 @model LoginViewModel
 @{
     ViewBag.Title = "登录";
@@ -34,6 +35,34 @@
                 <p>
                     @Html.ActionLink("注册新用户", "Register")
                 </p>
+            }
+        </section>
+    </div>
+    <div class="col-md-4">
+        <section id="socialLoginForm">
+            <h4>使用第三方登录</h4>
+            <hr />
+            @{
+                var logInProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
+                if (logInProviders.Count() == 0)
+                {
+                    <div>
+                        <p>没有可用的第三方登陆方式</p>
+                    </div>
+                }
+                else
+                {
+                    using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div id="socialLoginList">
+                            @foreach (AuthenticationDescription item in logInProviders)
+                            {
+                                <button type="submit" class="btn btn-default" id="@item.AuthenticationType" name="provider" value="@item.AuthenticationType" title="使用 @item.Caption 账户登录">@item.AuthenticationType</button>
+                            }
+                        </div>
+                    }
+                }
             }
         </section>
     </div>

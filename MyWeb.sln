@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC5.Tests", "MVC5.Tests\MV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewStudy", "NewStudy\NewStudy.csproj", "{93C0CB40-F6A7-45A9-BC0B-3129D8DCCA84}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 Background Management", "05 Background Management", "{7884EF5E-FECB-4ABC-9347-67ED0755049B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 MyAdmin", "05 MyAdmin", "{7884EF5E-FECB-4ABC-9347-67ED0755049B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06 Management BusinessLogic", "06 Management BusinessLogic", "{5D870840-9B32-49F9-8F07-EE98874D222F}"
 EndProject

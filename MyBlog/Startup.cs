@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using MyBlog.Identity;
@@ -25,7 +26,18 @@ namespace MyBlog
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login"),
                 Provider = new CookieAuthenticationProvider()
+                {
+                    // 当用户登录时使应用程序可以验证安全戳。
+                    // 这是一项安全功能，当你更改密码或者向帐户添加外部登录名时，将使用此功能。
+                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
+                        validateInterval: TimeSpan.FromMinutes(30),
+                        regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
+                }
             });
+            //消极模式的外部Cookie身份验证中间件
+            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
+            app.UseMicrosoftAccountAuthentication(clientId: "da85c23c-b723-446f-9e98-eea57c5bbfb5", clientSecret: "d_Tw3_jXBUJ26M.Rvhg-l8w-8qylIMvC~2");
+
         }
     }
 }

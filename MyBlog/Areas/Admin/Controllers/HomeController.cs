@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace MyBlog.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin", Users = "Admin")]
+    [Authorize]
     public class HomeController : Controller
     {
         // GET: Admin/Home

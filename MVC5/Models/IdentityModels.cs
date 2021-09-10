@@ -25,7 +25,7 @@ namespace MVC5.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("Data Source=47.106.90.13;Initial Catalog=GrumpyFish;Persist Security Info=True;User ID=sa;Password=yF1@112233445", throwIfV1Schema: false)
         {
         }
 
