@@ -37,6 +37,8 @@ namespace MyBlog.Identity
 
         //public string TwitterHandle { get; set; }
 
+        public DateTime CreateOn { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // 请注意，authenticationType 必须与 CookieAuthenticationOptions.AuthenticationType 中定义的相应项匹配

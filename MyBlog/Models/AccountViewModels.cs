@@ -29,7 +29,7 @@ namespace MyBlog.Models
         public string Provider { get; set; }
 
         [Required]
-        [Display(Name = "代码")]
+        [Display(Name = "验证码")]
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 

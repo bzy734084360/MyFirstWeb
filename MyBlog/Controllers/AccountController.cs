@@ -54,7 +54,7 @@ namespace MyBlog.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.UserName };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.UserName, CreateOn = DateTime.Now };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -178,7 +178,7 @@ namespace MyBlog.Controllers
                     return View("ExternalLoginFailure");
                 }
                 //构建用户信息
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, CreateOn = DateTime.Now };
                 //注册
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
@@ -283,7 +283,7 @@ namespace MyBlog.Controllers
                     return View("Lockout");
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "代码无效。");
+                    ModelState.AddModelError("", "验证码无效。");
                     return View(model);
             }
         }
@@ -319,6 +319,9 @@ namespace MyBlog.Controllers
 
         private const string XsrfKey = "XsrfId";
 
+        /// <summary>
+        /// 构建第三方登录跳转
+        /// </summary>
         internal class ChallengeResult : HttpUnauthorizedResult
         {
             public ChallengeResult(string provider, string redirectUri)
