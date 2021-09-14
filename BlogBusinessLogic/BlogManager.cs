@@ -10,24 +10,24 @@ namespace BlogBusinessLogic
 {
     public class BlogManager
     {
-        private MyBlogRepository repository = new MyBlogRepository();
-        public List<Post> GetAllPosts()
+        private BlogPostRepository repository = new BlogPostRepository();
+        public List<BlogPost> GetAllPosts()
         {
             return repository.GetAll();
         }
-        public Post GetPostById(int id)
+        public BlogPost GetPostById(int id)
         {
             return repository.GetById(id);
         }
-        public void UpdatePost(Post post)
+        public void UpdatePost(BlogPost post)
         {
             repository.Update(post);
         }
-        public void Insert(Post post)
+        public void Insert(BlogPost post)
         {
             repository.Insert(post);
         }
-        public void Delete(Post post)
+        public void Delete(BlogPost post)
         {
             repository.Delete(post);
         }

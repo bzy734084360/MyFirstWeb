@@ -38,6 +38,6 @@ namespace BlogRepository
         /// <summary>
         /// 
         /// </summary>
-        public DbSet<Post> Posts { get; set; }
+        public DbSet<BlogPost> BlogPost { get; set; }
     }
 }

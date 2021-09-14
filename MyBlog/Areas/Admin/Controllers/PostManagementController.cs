@@ -40,7 +40,7 @@ namespace MyBlog.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Insert(PostMaintainViewModel model)
         {
-            Post entity = new Post();
+            BlogPost entity = new BlogPost();
             entity.Author = "暴走鱼";
             entity.CreateDate = DateTime.Now;
             entity.ModifyDate = DateTime.Now;

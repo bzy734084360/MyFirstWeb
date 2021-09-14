@@ -42,6 +42,23 @@ VALUES (@Id,@UserName,@UserPassword,@ModifiedTime)", entity);
             }
         }
         /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public int UpdateEntity(BzyUserEntity entity)
+        {
+            using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
+            {
+                return connection.Execute(@"UPDATE [dbo].[bzy_User]
+                                            SET 
+                                            [UserName] =@UserName,
+                                            [UserPassword] = @UserPassword,
+                                            [ModifiedTime] = @ModifiedTime
+                                            WHERE Id=@Id", entity);
+            }
+        }
+        /// <summary>
         /// 查询
         /// </summary>
         /// <param name="id"></param>
@@ -90,23 +107,6 @@ VALUES (@Id,@UserName,@UserPassword,@ModifiedTime)", entity);
             using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
             {
                 return connection.Query<BzyUserEntity>(@"select*from  bzy_User where Id=@Id", ids).ToList();
-            }
-        }
-        /// <summary>
-        /// 修改
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
-        public int UpdateEntity(BzyUserEntity entity)
-        {
-            using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
-            {
-                return connection.Execute(@"UPDATE [dbo].[bzy_User]
-                                            SET 
-                                            [UserName] =@UserName,
-                                            [UserPassword] = @UserPassword,
-                                            [ModifiedTime] = @ModifiedTime
-                                            WHERE Id=@Id", entity);
             }
         }
     }

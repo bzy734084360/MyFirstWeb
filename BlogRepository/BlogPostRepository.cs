@@ -9,9 +9,16 @@ using System.Threading.Tasks;
 
 namespace BlogRepository
 {
-    public class MyBlogRepository
+    /// <summary>
+    /// 博客文章仓库
+    /// </summary>
+    public class BlogPostRepository
     {
-        public List<Post> GetAll()
+        /// <summary>
+        /// 获取全部数据
+        /// </summary>
+        /// <returns></returns>
+        public List<BlogPost> GetAll()
         {
             //代码操作
             //        string queryString = @"SELECT [ID],[Title],[Content],[CreateDate],[ModifyDate],[Author] 
@@ -45,11 +52,15 @@ namespace BlogRepository
             //        return result;
             using (var dbcontext = new BlogContext())
             {
-                return dbcontext.Posts.ToList();
+                return dbcontext.BlogPost.ToList();
             }
         }
-
-        public Post GetById(int id)
+        /// <summary>
+        /// 获取指定文章
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public BlogPost GetById(int id)
         {
             //代码操作
             //        string queryString = @"SELECT [ID],[Title],[Content],[CreateDate],[ModifyDate],[Author] 
@@ -84,11 +95,14 @@ namespace BlogRepository
             //        return result;
             using (var dbcontext = new BlogContext())
             {
-                return dbcontext.Posts.Find(id);
+                return dbcontext.BlogPost.Find(id);
             }
         }
-
-        public void Update(Post post)
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="post"></param>
+        public void Update(BlogPost post)
         {
             using (var dbcontext = new BlogContext())
             {
@@ -96,16 +110,23 @@ namespace BlogRepository
                 dbcontext.SaveChanges();
             }
         }
-
-        public void Insert(Post post)
+        /// <summary>
+        /// 新增
+        /// </summary>
+        /// <param name="post"></param>
+        public void Insert(BlogPost post)
         {
             using (var dbcontext = new BlogContext())
             {
-                dbcontext.Posts.Add(post);
+                dbcontext.BlogPost.Add(post);
                 dbcontext.SaveChanges();
             }
         }
-        public void Delete(Post post)
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="post"></param>
+        public void Delete(BlogPost post)
         {
             using (var dbcontext = new BlogContext())
             {

@@ -33,9 +33,6 @@ namespace MyBlog.Identity
     }
     public class ApplicationUser : IdentityUser
     {
-        //public string Address { get; set; }
-
-        //public string TwitterHandle { get; set; }
 
         public DateTime CreateOn { get; set; }
 

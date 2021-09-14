@@ -9,7 +9,7 @@ namespace BlogModel
     /// <summary>
     /// 文章Model
     /// </summary>
-    public class Post
+    public class BlogPost
     {
         /// <summary>
         /// 文章标识
