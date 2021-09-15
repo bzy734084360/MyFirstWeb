@@ -184,6 +184,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ControllerBase.cs" />
+    <Compile Include="Areas\Admin\Controllers\BlogClientController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostManagementController.cs" />
     <Compile Include="Areas\Admin\Models\PostMaintainListViewModel.cs" />
@@ -192,6 +194,7 @@
     <Compile Include="Controllers\CookieProtectController.cs" />
     <Compile Include="Controllers\DirectRoutingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OAuth2Controller.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -207,6 +210,9 @@
     <Compile Include="MyBlogControllerFactory.cs" />
     <Compile Include="MyBlogDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provider\BlogAuthorizationCodeProvider.cs" />
+    <Compile Include="Provider\BlogOAuthAuthorizationServerProvider.cs" />
+    <Compile Include="Provider\BlogRefreshTokenProvider.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -264,9 +270,12 @@
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\OAuth2\Authorize.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Views\BaseAdmin\" />
+    <Folder Include="Areas\Admin\Views\BlogClient\" />
     <Folder Include="Views\DirectRouting\" />
   </ItemGroup>
   <ItemGroup>

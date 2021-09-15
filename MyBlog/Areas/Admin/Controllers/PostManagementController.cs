@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace MyBlog.Areas.Admin.Controllers
 {
-    public class PostManagementController : Controller
+    public class PostManagementController : ControllerBase
     {
         private BlogPostManager manager = new BlogPostManager();
         /// <summary>
@@ -41,7 +41,7 @@ namespace MyBlog.Areas.Admin.Controllers
         public ActionResult Insert(PostMaintainViewModel model)
         {
             BlogPost entity = new BlogPost();
-            entity.Author = "暴走鱼";
+            entity.Author = this.User.Identity.Name;
             entity.CreateDate = DateTime.Now;
             entity.ModifyDate = DateTime.Now;
             entity.Content = model.Content;

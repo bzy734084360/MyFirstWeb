@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace MyBlog.Areas.Admin.Controllers
 {
-    public class HomeController : ControllerBase
+    public class BlogClientController : ControllerBase
     {
-        // GET: Admin/Home
+        // GET: Admin/BlogClient
         public ActionResult Index()
         {
             return View();

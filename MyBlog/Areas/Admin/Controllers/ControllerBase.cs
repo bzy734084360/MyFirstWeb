@@ -6,12 +6,11 @@ using System.Web.Mvc;
 
 namespace MyBlog.Areas.Admin.Controllers
 {
-    public class HomeController : ControllerBase
+    /// <summary>
+    /// 
+    /// </summary>
+    [Authorize]
+    public class ControllerBase : Controller
     {
-        // GET: Admin/Home
-        public ActionResult Index()
-        {
-            return View();
-        }
     }
 }

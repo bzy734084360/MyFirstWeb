@@ -4,6 +4,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using MyBlog.Identity;
+using MyBlog.Provider;
 using Owin;
 using System;
 
@@ -45,6 +46,7 @@ namespace MyBlog
 
 
             /*
+             * OAuth 2.0
              * 为Owin中间件添加一个授权服务器
              * 添加授权服务器终结点 AuthorizeEndpointPath：授权码 TokenEndpointPath：Token
              */
@@ -52,7 +54,16 @@ namespace MyBlog
             {
                 AllowInsecureHttp = true,//线上服务器切换为False
                 AuthorizeEndpointPath = new PathString("/oauth2/authorize"),
-                TokenEndpointPath = new PathString("/oauth2/token")
+                TokenEndpointPath = new PathString("/oauth2/token"),
+                Provider = new BlogOAuthAuthorizationServerProvider(),
+                AuthorizationCodeProvider = new BlogAuthorizationCodeProvider(),
+                RefreshTokenProvider = new BlogRefreshTokenProvider()
+            });
+            /*
+             * 添加基于 Access Token 的身份验证
+             */
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions()
+            {
             });
 
 

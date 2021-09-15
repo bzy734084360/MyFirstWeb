@@ -13,9 +13,9 @@ namespace BlogModel
         /// </summary>
         public string Id { get; set; }
         /// <summary>
-        /// 密钥
+        /// 密码
         /// </summary>
-        public string Secret { get; set; }
+        public string Sercet { get; set; }
         /// <summary>
         /// 回调地址
         /// </summary>
