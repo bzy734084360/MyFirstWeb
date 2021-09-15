@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BlogClientManager.cs" />
     <Compile Include="BlogPostManager.cs" />
+    <Compile Include="IManagerBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

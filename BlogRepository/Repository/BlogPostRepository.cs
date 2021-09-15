@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlogRepository
+namespace BlogRepository.Repository
 {
     /// <summary>
     /// 博客文章仓库

@@ -1,5 +1,5 @@
 ﻿using BlogModel;
-using BlogRepository;
+using BlogRepository.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,25 +8,36 @@ using System.Threading.Tasks;
 
 namespace BlogBusinessLogic
 {
-    public class BlogClientManager
+    /// <summary>
+    /// 博客-授权用户业务类
+    /// </summary>
+    public class BlogClientManager : IManagerBase<BlogClient>
     {
         private BlogClientRepository repository = new BlogClientRepository();
 
-        public BlogClient GetPostById(int id)
+        public int AddEntity(BlogClient entity)
         {
-            return repository.GetById(id);
+            return repository.AddEntity(entity);
         }
-        public void UpdatePost(BlogClient entity)
+
+        public int UpdateEntity(BlogClient entity)
         {
-            repository.Update(entity);
+            return repository.AddEntity(entity);
         }
-        public void Insert(BlogClient entity)
+
+        public int DeleteEntity(string id)
         {
-            repository.Insert(entity);
+            return repository.DeleteEntity(id);
         }
-        public void Delete(string id)
+
+        public BlogClient QueryEntity(string id)
         {
-            repository.Delete(id);
+            return repository.QueryEntity(id);
+        }
+
+        public List<BlogClient> QueryList()
+        {
+            return repository.QueryList();
         }
     }
 }

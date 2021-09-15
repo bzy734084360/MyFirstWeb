@@ -1,4 +1,5 @@
 ﻿using BlogModel;
+using BlogRepository.IRepository;
 using Bzy.Utilities;
 using Dapper;
 using System;
@@ -9,19 +10,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlogRepository
+namespace BlogRepository.Repository
 {
     /// <summary>
     /// 博客Client仓库
     /// </summary>
-    public class BlogClientRepository
+    public class BlogClientRepository : IBlogClientRepository<BlogClient>
     {
         /// <summary>
         /// 获取指定博客Client
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public BlogClient GetById(int id)
+        public BlogClient QueryEntity(string id)
         {
             using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
             {
@@ -32,7 +33,7 @@ namespace BlogRepository
         /// 修改
         /// </summary>
         /// <param name="post"></param>
-        public int Update(BlogClient entity)
+        public int UpdateEntity(BlogClient entity)
         {
             using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
             {
@@ -47,7 +48,7 @@ namespace BlogRepository
         /// 新增
         /// </summary>
         /// <param name="post"></param>
-        public int Insert(BlogClient entity)
+        public int AddEntity(BlogClient entity)
         {
             using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
             {
@@ -67,11 +68,22 @@ namespace BlogRepository
         /// 删除
         /// </summary>
         /// <param name="post"></param>
-        public int Delete(string id)
+        public int DeleteEntity(string id)
         {
             using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
             {
                 return connection.Execute(@"delete bzy_User where Id=@Id", new { Id = id });
+            }
+        }
+        /// <summary>
+        /// 查询列表
+        /// </summary>
+        /// <returns></returns>
+        public List<BlogClient> QueryList()
+        {
+            using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
+            {
+                return connection.Query<BlogClient>(@"select * from  BlogClient ").ToList();
             }
         }
     }
