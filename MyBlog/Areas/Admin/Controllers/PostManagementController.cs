@@ -11,7 +11,7 @@ namespace MyBlog.Areas.Admin.Controllers
 {
     public class PostManagementController : Controller
     {
-        private BlogManager manager = new BlogManager();
+        private BlogPostManager manager = new BlogPostManager();
         /// <summary>
         /// 获取文章列表
         /// </summary>

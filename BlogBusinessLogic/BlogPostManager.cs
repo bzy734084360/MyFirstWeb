@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BlogBusinessLogic
 {
-    public class BlogManager
+    public class BlogPostManager
     {
         private BlogPostRepository repository = new BlogPostRepository();
         public List<BlogPost> GetAllPosts()

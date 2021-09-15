@@ -20,5 +20,14 @@ namespace BlogModel
         /// 回调地址
         /// </summary>
         public string RedirectUrl { get; set; }
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreateTime { get; set; }
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime ModifiedTime { get; set; }
+
     }
 }

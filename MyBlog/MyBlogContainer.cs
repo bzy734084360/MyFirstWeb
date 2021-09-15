@@ -22,7 +22,7 @@ namespace MyBlog
             //创建容器构筑对象
             var builder = new ContainerBuilder();
             //添加容器包含的"水"类型？？？
-            builder.RegisterType<BlogManager>();
+            builder.RegisterType<BlogPostManager>();
             builder.RegisterType<PostController>();
             var container = builder.Build();
             return container;

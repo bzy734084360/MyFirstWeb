@@ -32,36 +32,46 @@ namespace BlogRepository
         /// 修改
         /// </summary>
         /// <param name="post"></param>
-        public void Update(BlogClient post) 
+        public int Update(BlogClient entity)
         {
-            using (var dbcontext = new BlogContext())
+            using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
             {
-                dbcontext.Entry(post).State = System.Data.Entity.EntityState.Modified;
-                dbcontext.SaveChanges();
+                return connection.Execute(@"UPDATE [dbo].[BlogClient]
+   SET [Secret] =@Secret
+      ,[RedirectUrl] =@RedirectUrl
+      ,[ModifiedTime] = <ModifiedTime, datetime,>
+ WHERE Id=@Id", entity);
             }
         }
         /// <summary>
         /// 新增
         /// </summary>
         /// <param name="post"></param>
-        public void Insert(BlogClient post)
+        public int Insert(BlogClient entity)
         {
-            using (var dbcontext = new BlogContext())
+            using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
             {
-                //dbcontext.BlogPost.Add(post);
-                //dbcontext.SaveChanges();
+                return connection.Execute(@"INSERT INTO [dbo].[BlogClient]
+           ([Secret]
+           ,[RedirectUrl]
+           ,[CreateTime]
+           ,[ModifiedTime])
+     VALUES
+           (@Secret
+           ,@RedirectUrl
+           ,@CreateTime
+           ,@ModifiedTime)", entity);
             }
         }
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="post"></param>
-        public void Delete(BlogClient post)
+        public int Delete(string id)
         {
-            using (var dbcontext = new BlogContext())
+            using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
             {
-                dbcontext.Entry(post).State = System.Data.Entity.EntityState.Deleted;
-                dbcontext.SaveChanges();
+                return connection.Execute(@"delete bzy_User where Id=@Id", new { Id = id });
             }
         }
     }

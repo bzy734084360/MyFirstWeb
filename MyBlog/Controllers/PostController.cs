@@ -10,8 +10,8 @@ namespace MyBlog.Controllers
 {
     public class PostController : Controller
     {
-        private BlogManager manager;
-        public PostController(BlogManager blogManager)
+        private BlogPostManager manager;
+        public PostController(BlogPostManager blogManager)
         {
             //通过autofac 注入
             manager = blogManager;
