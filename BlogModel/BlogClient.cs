@@ -15,7 +15,7 @@ namespace BlogModel
         /// <summary>
         /// 密码
         /// </summary>
-        public string Sercet { get; set; }
+        public string Secret { get; set; }
         /// <summary>
         /// 回调地址
         /// </summary>
