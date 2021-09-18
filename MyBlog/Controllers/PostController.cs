@@ -8,6 +8,9 @@ using System.Web.Mvc;
 
 namespace MyBlog.Controllers
 {
+    /// <summary>
+    /// 博客文章相关
+    /// </summary>
     public class PostController : Controller
     {
         private BlogPostManager manager;

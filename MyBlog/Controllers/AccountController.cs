@@ -16,7 +16,7 @@ namespace MyBlog.Controllers
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
+        private BlogUserManager _userManager;
 
         public ApplicationSignInManager SignInManager
         {
@@ -29,11 +29,11 @@ namespace MyBlog.Controllers
                 _signInManager = value;
             }
         }
-        public ApplicationUserManager UserManager
+        public BlogUserManager UserManager
         {
             get
             {
-                return _userManager ?? HttpContext.GetOwinContext().Get<ApplicationUserManager>();
+                return _userManager ?? HttpContext.GetOwinContext().Get<BlogUserManager>();
             }
             private set
             {
@@ -54,7 +54,7 @@ namespace MyBlog.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.UserName, CreateOn = DateTime.Now };
+                var user = new BlogUser { UserName = model.UserName, Email = model.UserName, CreateOn = DateTime.Now };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -178,7 +178,7 @@ namespace MyBlog.Controllers
                     return View("ExternalLoginFailure");
                 }
                 //构建用户信息
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, CreateOn = DateTime.Now };
+                var user = new BlogUser { UserName = model.Email, Email = model.Email, CreateOn = DateTime.Now };
                 //注册
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)

@@ -11,7 +11,7 @@ using System.Web;
 
 namespace MyBlog.Identity
 {
-    public class BlogIdentityDbContext : IdentityDbContext<ApplicationUser>
+    public class BlogIdentityDbContext : IdentityDbContext<BlogUser>
     {
         public BlogIdentityDbContext() : base(SystemInfo.BzyDbConnection, throwIfV1Schema: false)
         {
@@ -31,12 +31,12 @@ namespace MyBlog.Identity
         }
 
     }
-    public class ApplicationUser : IdentityUser
+    public class BlogUser : IdentityUser
     {
 
         public DateTime CreateOn { get; set; }
 
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<BlogUser> manager)
         {
             // 请注意，authenticationType 必须与 CookieAuthenticationOptions.AuthenticationType 中定义的相应项匹配
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);

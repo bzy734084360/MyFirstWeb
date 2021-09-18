@@ -10,6 +10,9 @@ using System.Web.Security;
 
 namespace MyBlog.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ClaimsBaseAuthorize(ClaimType = "testType", ClaimValue = "testClaim")]
     public class CookieProtectController : Controller
     {

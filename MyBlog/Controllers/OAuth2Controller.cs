@@ -7,6 +7,9 @@ using System.Web.Mvc;
 
 namespace MyBlog.Controllers
 {
+    /// <summary>
+    /// OAuth授权用户
+    /// </summary>
     public class OAuth2Controller : Controller
     {
         [Authorize]

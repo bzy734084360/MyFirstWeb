@@ -1,4 +1,5 @@
 ﻿using BlogBusinessLogic;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using System;
 using System.Collections.Generic;
@@ -48,7 +49,6 @@ namespace MyBlog.Provider
                 //    context.SetError("invalic_clientSercet", $"无效的 clientSercet:{clientSercet}");
                 //    return Task.FromResult<object>(null);
                 //}
-
             }
             else
             {
@@ -76,7 +76,7 @@ namespace MyBlog.Provider
          */
         public override Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            var userManager = context.OwinContext.Get<ApplicationUserManager>("AspNet.Identity.Owin:" + typeof(ApplicationUserManager).AssemblyQualifiedName);
+            var userManager = context.OwinContext.Get<BlogUserManager>("AspNet.Identity.Owin:" + typeof(BlogUserManager).AssemblyQualifiedName);
             if (userManager != null)
             {
                 var user = userManager.FindAsync(context.UserName, context.Password).Result;
@@ -88,7 +88,12 @@ namespace MyBlog.Provider
                 var identity = new ClaimsIdentity(
                     new GenericIdentity(context.UserName, OAuthDefaults.AuthenticationType),
                     context.Scope.Select(t => new Claim("urn:oauth:scope", t)));
-                context.Validated(identity);
+                var props = new AuthenticationProperties(new Dictionary<string, string>
+                {
+                    { "aud",context.ClientId ?? string.Empty}
+                });
+                var ticket = new AuthenticationTicket(identity, props);
+                context.Validated(ticket);
             }
             return Task.FromResult(0);
         }

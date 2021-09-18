@@ -7,7 +7,7 @@ using System.Web.Mvc;
 namespace MyBlog.Controllers
 {
     /// <summary>
-    /// 特性路由
+    /// 特性路由测试demo
     /// </summary>
     public class DirectRoutingController : Controller
     {

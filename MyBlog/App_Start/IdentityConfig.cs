@@ -48,18 +48,18 @@ namespace MyBlog
     }
 
     // 配置此应用程序中使用的应用程序用户管理器。UserManager 在 ASP.NET Identity 中定义，并由此应用程序使用。
-    public class ApplicationUserManager : UserManager<ApplicationUser>
+    public class BlogUserManager : UserManager<BlogUser>
     {
-        public ApplicationUserManager(IUserStore<ApplicationUser> store)
+        public BlogUserManager(IUserStore<BlogUser> store)
             : base(store)
         {
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
+        public static BlogUserManager Create(IdentityFactoryOptions<BlogUserManager> options, IOwinContext context)
         {
-            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<BlogIdentityDbContext>()));
+            var manager = new BlogUserManager(new UserStore<BlogUser>(context.Get<BlogIdentityDbContext>()));
             // 配置用户名的验证逻辑
-            manager.UserValidator = new UserValidator<ApplicationUser>(manager)
+            manager.UserValidator = new UserValidator<BlogUser>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
@@ -82,11 +82,11 @@ namespace MyBlog
 
             // 注册双重身份验证提供程序。此应用程序使用手机和电子邮件作为接收用于验证用户的代码的一个步骤
             // 你可以编写自己的提供程序并将其插入到此处。
-            manager.RegisterTwoFactorProvider("手机信息", new PhoneNumberTokenProvider<ApplicationUser>
+            manager.RegisterTwoFactorProvider("手机信息", new PhoneNumberTokenProvider<BlogUser>
             {
                 MessageFormat = "您登录的验证码是{0}"
             });
-            manager.RegisterTwoFactorProvider("邮件信息", new EmailTokenProvider<ApplicationUser>
+            manager.RegisterTwoFactorProvider("邮件信息", new EmailTokenProvider<BlogUser>
             {
                 Subject = "My Blog 登陆验证信息",
                 BodyFormat = "您登录的验证码是{0}"
@@ -97,28 +97,28 @@ namespace MyBlog
             if (dataProtectionProvider != null)
             {
                 manager.UserTokenProvider =
-                    new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
+                    new DataProtectorTokenProvider<BlogUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
         }
     }
 
     // 配置要在此应用程序中使用的应用程序登录管理器。
-    public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
+    public class ApplicationSignInManager : SignInManager<BlogUser, string>
     {
-        public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
+        public ApplicationSignInManager(BlogUserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
         {
         }
 
-        public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser user)
+        public override Task<ClaimsIdentity> CreateUserIdentityAsync(BlogUser user)
         {
-            return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
+            return user.GenerateUserIdentityAsync((BlogUserManager)UserManager);
         }
 
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
         {
-            return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+            return new ApplicationSignInManager(context.GetUserManager<BlogUserManager>(), context.Authentication);
         }
     }
 }

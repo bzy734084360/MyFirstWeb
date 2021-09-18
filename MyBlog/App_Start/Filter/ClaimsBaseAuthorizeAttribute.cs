@@ -11,7 +11,7 @@ namespace MyBlog.App_Start.Filter
     {
         public string ClaimType { get; set; }
         public string ClaimValue { get; set; }
-        public override void OnAuthorization(AuthorizationContext filterContext)
+        public override void OnAuthorization(System.Web.Mvc.AuthorizationContext filterContext)
         {
             var user = filterContext.HttpContext.User as ClaimsPrincipal;
             //匹配指定声明类型以及声明值
