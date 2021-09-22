@@ -40,13 +40,15 @@ namespace MyBlog.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Insert(PostMaintainViewModel model)
         {
-            BlogPost entity = new BlogPost();
-            entity.Author = this.User.Identity.Name;
-            entity.CreateDate = DateTime.Now;
-            entity.ModifyDate = DateTime.Now;
-            entity.Content = model.Content;
-            entity.Title = model.Title;
-            entity.IsPublish = false;
+            BlogPost entity = new BlogPost()
+            {
+                Author = this.User.Identity.Name,
+                CreateDate = DateTime.Now,
+                ModifyDate = DateTime.Now,
+                Content = model.Content,
+                Title = model.Title,
+                IsPublish = false
+            };
             manager.Insert(entity);
             return RedirectToAction("Index");
         }
