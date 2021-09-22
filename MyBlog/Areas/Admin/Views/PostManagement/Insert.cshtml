@@ -5,9 +5,11 @@
 }
 <script src="~/Scripts/ueditor/third-party/jquery-1.10.2.min.js"></script>
 <!-- 配置文件 -->
-<script src="~/Scripts/ueditor/ueditor.config.js"></script>
+<script charset="gbk" src="~/Scripts/ueditor/ueditor.config.js"></script>
 <!-- 编辑器源码文件 -->
-<script src="~/Scripts/ueditor/ueditor.all.js"></script>
+<script charset="gbk" src="~/Scripts/ueditor/ueditor.all.js"></script>
+<!-- 中文初始化 -->
+<script charset="gbk" src="~/Scripts/ueditor/lang/zh-cn/zh-cn.js"></script>
 <!-- 实例化编辑器 -->
 <script>
     var ue = UE.getEditor('container');
@@ -18,7 +20,7 @@
     <label>标题</label>
     <h2>@Html.TextBoxFor(t => t.Title)</h2>
     <label>内容</label>
-    <script id="container" name="Content" >
+    <script id="container" name="Content">
         @Html.Raw(Model.Content)
     </script>
     <button type="submit">提交</button>

@@ -5,5 +5,5 @@
 }
 
 <h2>@Model.Title</h2>
-<p>@Model.Content</p>
+@Html.Raw(@Model.Content)
 <p>作者：@Model.Author,发布时间：@Model.CreateDate.ToString("yyyy-MM-dd HH:mm")</p>

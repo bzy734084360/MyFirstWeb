@@ -4,12 +4,25 @@
     ViewBag.Title = "更新文章";
 }
 
+<script src="~/Scripts/ueditor/third-party/jquery-1.10.2.min.js"></script>
+<!-- 配置文件 -->
+<script charset="gbk" src="~/Scripts/ueditor/ueditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script charset="gbk" src="~/Scripts/ueditor/ueditor.all.js"></script>
+<!-- 中文初始化 -->
+<script charset="gbk" src="~/Scripts/ueditor/lang/zh-cn/zh-cn.js"></script>
+<!-- 实例化编辑器 -->
+<script>
+    var ue = UE.getEditor('container');
+</script>
+
 @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "post-form" }))
 {
     <label>标题</label>
     <h2>@Html.TextBoxFor(t => t.Title)</h2>
     <label>内容</label>
-    <p>@Html.TextAreaFor(t => t.Content)</p>
+    <script id="container" name="Content">
+        @Html.Raw(Model.Content)
+    </script>
     <button type="submit">提交</button>
 }
-
