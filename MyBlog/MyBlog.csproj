@@ -240,6 +240,7 @@
     <Compile Include="Scripts\ueditor\net\App_Code\PathFormater.cs" />
     <Compile Include="Scripts\ueditor\net\App_Code\UploadHandler.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utils\BlogValidation\MyValidationAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -251,6 +252,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="myweb.ico" />
+    <Content Include="Scripts\blog.validate.extension.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />

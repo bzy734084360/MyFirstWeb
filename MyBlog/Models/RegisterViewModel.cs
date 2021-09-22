@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyBlog.Utils.BlogValidation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace MyBlog.Models
         [Required]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "用户名")]
+        [MyValidation(ErrorMessage = "自定义错误内容")]
         public string UserName { get; set; }
 
         [Required]
