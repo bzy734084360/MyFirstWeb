@@ -37,6 +37,13 @@ namespace Bzy.BizLogic
         /// <returns></returns>
         Task<BzyUserEntity> QueryEntityAsync(string userName, string userPassword);
         /// <summary>
+        /// token用户校验
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="userPassword"></param>
+        /// <returns></returns>
+        BzyUserEntity QueryEntity(string userName, string userPassword);
+        /// <summary>
         /// 查询注册信息
         /// </summary>
         /// <param name="id"></param>

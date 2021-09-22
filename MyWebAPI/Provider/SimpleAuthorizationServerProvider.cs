@@ -42,11 +42,10 @@ namespace MyWebAPI.Auth
              * username - 用户名
              * password - 用户密码
              */
-
             UserData userData = new UserData() { Id = string.Empty, UserName = string.Empty, UserRole = string.Empty };
 
             //登录操作（登录信息记录未开发，暂时只做账号密码验证）
-            var userEntity = await BzyService.Instance.BzyUserService.QueryEntityAsync(context.UserName, SecretHelper.AESDecrypt(context.Password));
+            var userEntity = BzyService.Instance.BzyUserService.QueryEntity(context.UserName, SecretHelper.AESEncrypt(context.Password));
             if (userEntity == null)
             {
                 context.SetError("invalid_grant", "用户名或密码无效");
@@ -74,6 +73,7 @@ namespace MyWebAPI.Auth
             var ticket = new AuthenticationTicket(identity, props);
             context.Validated(ticket);
             return;
+            await base.GrantResourceOwnerCredentials(context);
         }
         /*
          * TokenEndpoint方法将会把Context中的AuthenticationProperties属性加入到token中。

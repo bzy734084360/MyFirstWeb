@@ -25,25 +25,25 @@ namespace MyWebAPI.Auth
         {
             var refreshTokenId = Guid.NewGuid().ToString("n");
 
-            var token = new RefreshTokenEntity()
-            {
-                Id = refreshTokenId,
-                UserName = context.Ticket.Identity.Name,
-                IssuedUtc = DateTime.UtcNow,
-                ExpiresUtc = DateTime.UtcNow.AddMinutes(30)
-            };
+            //var token = new RefreshTokenEntity()
+            //{
+            //    Id = refreshTokenId,
+            //    UserName = context.Ticket.Identity.Name,
+            //    IssuedUtc = DateTime.UtcNow,
+            //    ExpiresUtc = DateTime.UtcNow.AddMinutes(30)
+            //};
 
-            context.Ticket.Properties.IssuedUtc = token.IssuedUtc;
-            context.Ticket.Properties.ExpiresUtc = token.ExpiresUtc;
+            //context.Ticket.Properties.IssuedUtc = token.IssuedUtc;
+            //context.Ticket.Properties.ExpiresUtc = token.ExpiresUtc;
 
-            token.ProtectedTicket = context.SerializeTicket();
-            //添加刷新token记录
-            int addResult = await BzyService.Instance.RefreshTokenService.AddEntityAsync(token);
+            //token.ProtectedTicket = context.SerializeTicket();
+            //添加刷新token记录 带完善 异步处理有Bug
+            //int addResult = await BzyService.Instance.RefreshTokenService.AddEntityAsync(token);
 
-            if (addResult == 1)
-            {
-                context.SetToken(refreshTokenId);
-            }
+            //if (addResult == 1)
+            //{
+            context.SetToken(refreshTokenId);
+            //}
         }
         public async Task ReceiveAsync(AuthenticationTokenReceiveContext context)
         {

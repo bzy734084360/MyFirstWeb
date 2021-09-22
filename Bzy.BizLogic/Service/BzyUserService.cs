@@ -83,6 +83,19 @@ VALUES (@Id,@UserName,@UserPassword,@ModifiedTime)", entity);
                 return connection.QueryFirstAsync<BzyUserEntity>(@"select *from bzy_User where userName=@userName and userPassword=@userPassword", new { userName, userPassword });
             }
         }
+        /// <summary>
+        /// token用户校验
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="userPassword"></param>
+        /// <returns></returns>
+        public BzyUserEntity QueryEntity(string userName, string userPassword)
+        {
+            using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
+            {
+                return connection.QueryFirst<BzyUserEntity>(@"select *from bzy_User where userName=@userName and userPassword=@userPassword", new { userName, userPassword });
+            }
+        }
 
         /// <summary>
         /// 查询用户注册信息
