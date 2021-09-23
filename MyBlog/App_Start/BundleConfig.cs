@@ -27,6 +27,59 @@ namespace MyBlog
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            //clean_blog
+            //CSS
+            //bundles.Add(new StyleBundle("~/bundles/cleanblog/bootstrapcss").Include(
+            //    "~/Content/clean_blog/dist/css/styles.css"
+            //    ));
+            //bundles.Add(new StyleBundle("~/bundles/cleanblog/fonts").Include(
+            //    "~/Content/clean_blog/dist/css/styles.css"
+            //    ));
+            var cleanblogcss = new StyleBundle("~/bundles/cleanblog/css").Include(
+                "~/Content/clean_blog/dist/css/styles.css", new SampleTransform()
+                );
+            cleanblogcss.Transforms.Add(new SampleBundleTransform());
+            bundles.Add(cleanblogcss);
+            //JS   ~/Content/clean_blog/dist/js/*.js 通配字符*
+            bundles.Add(new ScriptBundle("~/bundles/cleanblog/bootstrapjs").Include(
+                "~/Content/clean_blog/dist/js/bootstrap.bundle.min.js"
+                ));
+            bundles.Add(new ScriptBundle("~/bundles/cleanblog/js").Include(
+                "~/Content/clean_blog/dist/js/scripts.js"
+                ));
+
+            //使用CDN
+            bundles.UseCdn = true;
+            var jqueryCDNPath = "https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js";
+            var jqueryBundle = new ScriptBundle("~/bundles/cleanblog/jquery", jqueryCDNPath).Include(
+                "~/Content/clean_blog/vendor/jquery/jquery.js");
+            jqueryBundle.CdnFallbackExpression = "window.jQuery";//设置后 CDN不存在文件则取本地文件
+            bundles.Add(jqueryBundle);
+            //设置后 自动进行文件大小优化
+            BundleTable.EnableOptimizations = true;
+        }
+
+        /*
+         * 自定义资源转变  在CSS文件中追加样式
+         */
+        public class SampleTransform : IItemTransform
+        {
+            public string Process(string includedVirtualPath, string input)
+            {
+                input += " .test {color:red};";
+                return input;
+            }
+        }
+        /*
+         * 转换Bundle相应文件的方法
+         */
+        public class SampleBundleTransform : IBundleTransform
+        {
+            public void Process(BundleContext context, BundleResponse response)
+            {
+                response.Content += "/*hello grumpyfish*/";
+            }
         }
     }
 }

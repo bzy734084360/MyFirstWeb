@@ -35,7 +35,7 @@ namespace MyWebAPI.Auth
          * 后面的代码采用了ClaimsIdentity认证方式，其实我们可以把他当作一个NameValueCollection看待。
          * 最后context.Validated(ticket); 表明认证通过。
          */
-        public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
+        public override Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             /* 密码模式 resource owner password credentials模式需要body包含3个参数：
              * grant_type - 必须为password
@@ -49,7 +49,7 @@ namespace MyWebAPI.Auth
             if (userEntity == null)
             {
                 context.SetError("invalid_grant", "用户名或密码无效");
-                return;
+                return Task.FromResult<object>(null);
             }
             else
             {
@@ -72,8 +72,7 @@ namespace MyWebAPI.Auth
                 });
             var ticket = new AuthenticationTicket(identity, props);
             context.Validated(ticket);
-            return;
-            await base.GrantResourceOwnerCredentials(context);
+            return Task.FromResult(0);
         }
         /*
          * TokenEndpoint方法将会把Context中的AuthenticationProperties属性加入到token中。
