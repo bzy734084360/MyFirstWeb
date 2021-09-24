@@ -661,6 +661,10 @@
       <Project>{551c11b6-68e3-4b8a-b0dd-81f61d783715}</Project>
       <Name>BlogModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Bzy.Jobs\Bzy.Jobs.csproj">
+      <Project>{2b05d765-5c63-446c-89d5-b5258e24f1ac}</Project>
+      <Name>Bzy.Jobs</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bzy.Utilities\Bzy.Utilities.csproj">
       <Project>{a75890cb-599b-4b48-8412-cbb34190801c}</Project>
       <Name>Bzy.Utilities</Name>

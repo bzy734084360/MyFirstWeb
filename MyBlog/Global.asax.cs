@@ -1,3 +1,4 @@
+using Bzy.Jobs.BusinessScheduler;
 using Bzy.Utilities;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,9 @@ namespace MyBlog
             ViewEngines.Engines.Clear();
             //添加Razor
             ViewEngines.Engines.Add(new RazorViewEngine());
+
+            //启用任务调度
+            BusinessScheduler.RunBusinessJob();
         }
     }
 }
