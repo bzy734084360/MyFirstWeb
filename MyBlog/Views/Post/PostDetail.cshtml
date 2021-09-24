@@ -3,7 +3,31 @@
 @{
     ViewBag.Title = "文章内容";
 }
-
-<h2>@Model.Title</h2>
-@Html.Raw(@Model.Content)
-<p>作者：@Model.Author,发布时间：@Model.CreateDate.ToString("yyyy-MM-dd HH:mm")</p>
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('../../Content/clean_blog/dist/assets/img/post-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1>@Model.Title</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        提供者
+                        <a href="#!">@Model.Author</a>
+                        @Model.CreateDate.ToString("yyyy-MM-dd")
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Post Content-->
+<article class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                @Html.Raw(Model.Content)
+            </div>
+        </div>
+    </div>
+</article>

@@ -24,6 +24,7 @@ namespace MyBlog
             //添加容器包含的"水"类型？？？
             builder.RegisterType<BlogPostManager>();
             builder.RegisterType<PostController>();
+            builder.RegisterType<HomeController>();
             var container = builder.Build();
             return container;
         }

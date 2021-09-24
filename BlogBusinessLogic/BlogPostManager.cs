@@ -15,6 +15,10 @@ namespace BlogBusinessLogic
         {
             return repository.GetAll();
         }
+        public List<BlogPost> GetTop5()
+        {
+            return repository.GetTop5();
+        }
         public BlogPost GetPostById(int id)
         {
             return repository.GetById(id);

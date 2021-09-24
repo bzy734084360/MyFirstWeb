@@ -3,12 +3,45 @@
 @{
     ViewBag.Title = "文章列表";
 }
-<h2>文章列表</h2>
 
-<ul>
-    @foreach (var post in Model.Posts)
-    {
-        <li>@Html.ActionLink(post.Title, "PostDetail", new { id = post.ID })</li>
-    }
-</ul>
-<p>显示当前第 @Model.PageCount 页，共有 @Model.Pages 页 (记录总数：@Model.Count)。 </p>
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('../Content/clean_blog/dist/assets/img/home-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>大道至简-万物归一</h1>
+                    <span class="subheading">穷极一生，学其所用</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            @foreach (var item in Model.Posts)
+            {
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="/Post/PostDetail/@item.ID" title="查看该文章">
+                        <h2 class="post-title">@item.Title</h2>
+                        <h3 class="post-subtitle"></h3>
+                    </a>
+                    <p class="post-meta">
+                        提供者
+                        <a href="#!" title="跳转至该作者文章列表">@item.Author</a>
+                        @item.CreateDate.ToString("yyyy-MM-dd")
+                    </p>
+                </div>
+                <!-- Divider-->
+                <hr class="my-4" />
+            }
+            <p>显示当前第 @Model.PageCount 页，共有 @Model.Pages 页 (记录总数：@Model.Count)。 </p>
+            <!-- Pager 分页器-->
+            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">分页器未提供</a></div>
+        </div>
+    </div>
+</div>
+

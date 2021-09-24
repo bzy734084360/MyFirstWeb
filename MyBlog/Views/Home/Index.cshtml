@@ -1,42 +1,44 @@
-﻿@{
+﻿@using MyBlog.Models
+@model List<PostViewModel>
+@{
     ViewBag.Title = "首页";
 }
-
-<div class="jumbotron">
-    <h1>暴走鱼的博客</h1>
-    <p class="lead">本博客用户学习</p>
-    <p>@Html.ActionLink("关于我>>", "Contact", "Home", new { @class = "btn btn-default" })</p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>最新博客</h2>
-        <ul>
-            <li>文章1</li>
-            <li>文章2</li>
-            <li>文章3</li>
-            <li>文章4</li>
-        </ul>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">更多 &raquo;</a></p>
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('../../Content/clean_blog/dist/assets/img/home-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>大道至简-万物归一</h1>
+                    <span class="subheading">穷极一生，学其所用</span>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>阅读排行</h2>
-        <ul>
-            <li>文章1</li>
-            <li>文章2</li>
-            <li>文章3</li>
-            <li>文章4</li>
-        </ul>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">更多 &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>评论排行</h2>
-        <ul>
-            <li>文章1</li>
-            <li>文章2</li>
-            <li>文章3</li>
-            <li>文章4</li>
-        </ul>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">更多 &raquo;</a></p>
+</header>
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            @foreach (var item in Model)
+            {
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="/Post/PostDetail/@item.ID" title="查看该文章">
+                        <h2 class="post-title">@item.Title</h2>
+                        <h3 class="post-subtitle"></h3>
+                    </a>
+                    <p class="post-meta">
+                        提供者
+                        <a href="#!" title="跳转至该作者文章列表">@item.Author</a>
+                        @item.CreateDate.ToString("yyyy-MM-dd")
+                    </p>
+                </div>
+                <!-- Divider-->
+                <hr class="my-4" />
+            }
+            <!-- Pager-->
+            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="/Post/Index">查看更多 →</a></div>
+        </div>
     </div>
 </div>

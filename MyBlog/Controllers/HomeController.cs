@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BlogBusinessLogic;
+using MyBlog.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,22 +11,32 @@ namespace MyBlog.Controllers
 {
     public class HomeController : Controller
     {
+        private BlogPostManager manager;
+        public HomeController(BlogPostManager blogManager)
+        {
+            manager = blogManager;
+        }
         public ActionResult Index()
         {
-            return View();
+            var postList = manager.GetTop5().Select(t => new PostViewModel
+            {
+                ID = t.ID,
+                Title = t.Title,
+                Content = t.Content,
+                CreateDate = t.CreateDate,
+                ModifyDate = t.ModifyDate,
+                Author = t.Author
+            }).ToList();
+            return View(postList);
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

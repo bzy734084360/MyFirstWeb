@@ -22,9 +22,14 @@ namespace MyBlog
             //替换容器的创建
             var container = MyBlogContainer.GetContainer();
             //解析器的替换
-            //DependencyResolver.SetResolver(new MyBlogDependencyResolver(container));
+            DependencyResolver.SetResolver(new MyBlogDependencyResolver(container));
             //替换控制器工厂
             ControllerBuilder.Current.SetControllerFactory(new MyBlogControllerFactory(container));
+
+            //优化性能，清除WebForm引擎，仅使用MVC
+            ViewEngines.Engines.Clear();
+            //添加Razor
+            ViewEngines.Engines.Add(new RazorViewEngine());
         }
     }
 }

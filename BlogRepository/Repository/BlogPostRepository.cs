@@ -20,6 +20,8 @@ namespace BlogRepository.Repository
         /// <returns></returns>
         public List<BlogPost> GetAll()
         {
+            #region 代码操作
+
             //代码操作
             //        string queryString = @"SELECT [ID],[Title],[Content],[CreateDate],[ModifyDate],[Author] 
             //FROM [dbo].[Posts] ";
@@ -50,10 +52,25 @@ namespace BlogRepository.Repository
             //            }
             //        }
             //        return result;
+            #endregion
+
             using (var dbcontext = new BlogContext())
             {
                 return dbcontext.BlogPost.ToList();
             }
+
+        }
+        /// <summary>
+        /// 获取前五数据
+        /// </summary>
+        /// <returns></returns>
+        public List<BlogPost> GetTop5()
+        {
+            using (var dbcontext = new BlogContext())
+            {
+                return dbcontext.BlogPost.OrderByDescending(t => t.ClickCount).Take(5).ToList();
+            }
+
         }
         /// <summary>
         /// 获取指定文章
@@ -62,6 +79,8 @@ namespace BlogRepository.Repository
         /// <returns></returns>
         public BlogPost GetById(int id)
         {
+            #region 代码操作
+
             //代码操作
             //        string queryString = @"SELECT [ID],[Title],[Content],[CreateDate],[ModifyDate],[Author] 
             //FROM [dbo].[Posts] where [ID]=@id";
@@ -93,6 +112,7 @@ namespace BlogRepository.Repository
             //            }
             //        }
             //        return result;
+            #endregion
             using (var dbcontext = new BlogContext())
             {
                 return dbcontext.BlogPost.Find(id);
