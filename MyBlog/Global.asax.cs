@@ -33,7 +33,7 @@ namespace MyBlog
             ViewEngines.Engines.Add(new RazorViewEngine());
 
             //启用任务调度
-            BusinessScheduler.RunBusinessJob();
+            //BusinessScheduler.RunBusinessJob();
         }
     }
 }

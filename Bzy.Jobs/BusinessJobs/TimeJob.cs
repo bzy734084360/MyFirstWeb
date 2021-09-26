@@ -13,16 +13,33 @@ namespace Bzy.Jobs.BusinessJobs
     /// </summary>
     public class TimeJob : IJob
     {
-        public Task Execute(IJobExecutionContext context)
+        public void Execute(IJobExecutionContext context)
         {
             if (!File.Exists(@"D:\yf\myweb\TestJobLog\testjob.txt"))
             {
                 FileStream fs = new FileStream(@"D:\yf\myweb\TestJobLog\testjob.txt", FileMode.OpenOrCreate);
                 fs.Close();
             }
-            File.AppendAllText(@"D:\yf\myweb\TestJobLog\testjob.txt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + Environment.NewLine);
+            File.AppendAllText(@"D:\yf\myweb\TestJobLog\testjob.txt", "我是任务1~~" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + Environment.NewLine);
             //写个日志
-            return Task.FromResult<object>(null);
+            return;
+        }
+    }
+    /// <summary>
+    /// 测试定时任务
+    /// </summary>
+    public class Time2Job : IJob
+    {
+        public void Execute(IJobExecutionContext context)
+        {
+            if (!File.Exists(@"D:\yf\myweb\TestJobLog\testjob.txt"))
+            {
+                FileStream fs = new FileStream(@"D:\yf\myweb\TestJobLog\testjob.txt", FileMode.OpenOrCreate);
+                fs.Close();
+            }
+            File.AppendAllText(@"D:\yf\myweb\TestJobLog\testjob.txt", "我是任务2~~" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + Environment.NewLine);
+            //写个日志
+            return;
         }
     }
 }
