@@ -17,10 +17,15 @@ namespace Bzy.Jobs.BusinessScheduler
         private static IScheduler _scheduler;
         public const string JOB_PRIFEX = "JOB_";
         public const string TRIGGER_PRIFEX = "TRG_";
+
+        public static BusinessScheduler CreateInstance()
+        {
+            return new BusinessScheduler();
+        }
         /// <summary>
         /// 执行JOB
         /// </summary>
-        public static void RunBusinessJob()
+        public void RunBusinessJob()
         {
             ISchedulerFactory factory = new StdSchedulerFactory();
             //创建调度器
@@ -86,7 +91,7 @@ namespace Bzy.Jobs.BusinessScheduler
             #endregion
         }
 
-        public static void StopScheduler()
+        public void StopScheduler()
         {
             _scheduler.Shutdown();
         }
