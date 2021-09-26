@@ -64,8 +64,6 @@ namespace MyBlog.Controllers
                 ID = post.ID,
                 Title = post.Title
             };
-            //日志测试
-            Logger.Info("访问了文章：" + post.Title);
             return View(postViewModel);
         }
     }
