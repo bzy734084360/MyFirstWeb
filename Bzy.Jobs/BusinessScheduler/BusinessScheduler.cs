@@ -15,15 +15,12 @@ namespace Bzy.Jobs.BusinessScheduler
     public class BusinessScheduler
     {
         /// <summary>
-        /// 调度器工厂
-        /// </summary>
-        static ISchedulerFactory factory = new StdSchedulerFactory();
-        /// <summary>
         /// 执行JOB
         /// </summary>
         public static void RunBusinessJob()
         {
             //TimeJob
+            ISchedulerFactory factory = new StdSchedulerFactory();
             //生成调度器
             var timeScheduler = factory.GetScheduler().Result;
             //创建任务对象

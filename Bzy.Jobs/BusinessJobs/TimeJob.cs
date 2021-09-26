@@ -15,12 +15,12 @@ namespace Bzy.Jobs.BusinessJobs
     {
         public Task Execute(IJobExecutionContext context)
         {
-            // 在此处插入电子邮件服务可发送电子邮件。
-            FileStream fs = new FileStream(@"D:\yf\myweb\TestJobLog\testjob.txt", FileMode.OpenOrCreate);
-            StreamWriter sw = new StreamWriter(fs);
-            sw.WriteLine(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-            sw.Close();
-            fs.Close();
+            if (!File.Exists(@"D:\yf\myweb\TestJobLog\testjob.txt"))
+            {
+                FileStream fs = new FileStream(@"D:\yf\myweb\TestJobLog\testjob.txt", FileMode.OpenOrCreate);
+                fs.Close();
+            }
+            File.AppendAllText(@"D:\yf\myweb\TestJobLog\testjob.txt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + Environment.NewLine);
             //写个日志
             return Task.FromResult<object>(null);
         }
