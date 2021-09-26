@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace MyBlog.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ControllerBase
     {
         private BlogPostManager manager;
         public HomeController(BlogPostManager blogManager)

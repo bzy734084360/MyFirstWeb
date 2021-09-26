@@ -197,6 +197,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\Filter\BlogExceptionFilter.cs" />
     <Compile Include="App_Start\Filter\ClaimsBaseAuthorizeAttribute.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -208,6 +209,7 @@
     <Compile Include="Areas\Admin\Models\PostMaintainListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\PostMaintainViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Utils\BlogControllerBase.cs" />
     <Compile Include="Controllers\CookieProtectController.cs" />
     <Compile Include="Controllers\DirectRoutingController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -318,6 +320,12 @@
     <Content Include="Content\clean_blog\src\scss\variables\_typography.scss" />
     <Content Include="Content\clean_blog\src\scss\_global.scss" />
     <Content Include="Content\clean_blog\src\scss\_variables.scss" />
+    <Content Include="BlogConfig\Blog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BlogConfig\NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -664,6 +672,10 @@
     <ProjectReference Include="..\Bzy.Jobs\Bzy.Jobs.csproj">
       <Project>{2b05d765-5c63-446c-89d5-b5258e24f1ac}</Project>
       <Name>Bzy.Jobs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bzy.Logger\Bzy.Logger.csproj">
+      <Project>{1e499573-aeaf-4994-b34b-ad4d1cb7817a}</Project>
+      <Name>Bzy.Logger</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bzy.Utilities\Bzy.Utilities.csproj">
       <Project>{a75890cb-599b-4b48-8412-cbb34190801c}</Project>

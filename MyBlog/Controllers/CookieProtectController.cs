@@ -14,7 +14,7 @@ namespace MyBlog.Controllers
     /// 
     /// </summary>
     [ClaimsBaseAuthorize(ClaimType = "testType", ClaimValue = "testClaim")]
-    public class CookieProtectController : Controller
+    public class CookieProtectController : ControllerBase
     {
         // GET: CookieProtect
         public ActionResult Index()

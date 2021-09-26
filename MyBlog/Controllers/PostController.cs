@@ -1,4 +1,5 @@
 ﻿using BlogBusinessLogic;
+using Bzy.Logger;
 using MyBlog.Models;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace MyBlog.Controllers
     /// <summary>
     /// 博客文章相关
     /// </summary>
-    public class PostController : Controller
+    public class PostController : ControllerBase
     {
         private BlogPostManager manager;
         public PostController(BlogPostManager blogManager)
@@ -63,6 +64,8 @@ namespace MyBlog.Controllers
                 ID = post.ID,
                 Title = post.Title
             };
+            //日志测试
+            Logger.Info("访问了文章：" + post.Title);
             return View(postViewModel);
         }
     }

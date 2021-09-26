@@ -13,7 +13,7 @@ using System.Web.Mvc;
 
 namespace MyBlog.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : ControllerBase
     {
         private ApplicationSignInManager _signInManager;
         private BlogUserManager _userManager;

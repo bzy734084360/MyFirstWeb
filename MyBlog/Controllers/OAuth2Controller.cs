@@ -10,7 +10,7 @@ namespace MyBlog.Controllers
     /// <summary>
     /// OAuth授权用户
     /// </summary>
-    public class OAuth2Controller : Controller
+    public class OAuth2Controller : ControllerBase
     {
         [Authorize]
         public ActionResult Authorize()
