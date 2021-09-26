@@ -33,8 +33,8 @@ namespace MyBlog
             ViewEngines.Engines.Add(new RazorViewEngine());
 
             //启用任务调度
-            BusinessScheduler businessScheduler = BusinessScheduler.CreateInstance();
-            businessScheduler.RunBusinessJob();
+            //BusinessScheduler businessScheduler = BusinessScheduler.CreateInstance();
+            //businessScheduler.RunBusinessJob();
         }
     }
 }
