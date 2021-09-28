@@ -10,7 +10,7 @@ namespace Bzy.ServiceCaller
     public abstract class BzyServiceFactory
     {
         /// <summary>
-        /// 映射接口
+        /// 映射创建
         /// </summary>
         /// <param name="servicePath"></param>
         /// <param name="serviceFactoryClass"></param>

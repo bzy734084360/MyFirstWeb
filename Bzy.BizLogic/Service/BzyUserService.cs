@@ -25,8 +25,21 @@ namespace Bzy.BizLogic
             entity.Id = Guid.NewGuid().ToString();
             using (IDbConnection connection = new SqlConnection(SystemInfo.BzyDbConnection))
             {
-                return connection.Execute(@"INSERT INTO [dbo].[bzy_User]([Id],[UserName],[UserPassword],[ModifiedTime])
+                //添加事务
+                connection.Open();
+                IDbTransaction transaction = connection.BeginTransaction();
+                try
+                {
+                    connection.Execute(@"INSERT INTO [dbo].[bzy_User]([Id],[UserName],[UserPassword],[ModifiedTime])
 VALUES (@Id,@UserName,@UserPassword,@ModifiedTime)", entity);
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    return 0;
+                }
+                return 1;
             }
         }
         /// <summary>

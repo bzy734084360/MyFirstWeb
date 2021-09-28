@@ -1,4 +1,5 @@
 ﻿using BlogModel;
+using BlogRepository.IRepository;
 using BlogRepository.Repository;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,9 @@ namespace BlogBusinessLogic
     /// <summary>
     /// 博客-授权用户业务类
     /// </summary>
-    public class BlogClientManager : IManagerBase<BlogClient>
+    public class BlogClientManager
     {
-        private BlogClientRepository repository = new BlogClientRepository();
+        private IBlogClientRepository<BlogClient> repository = new BlogClientRepository();
 
         public int AddEntity(BlogClient entity)
         {
