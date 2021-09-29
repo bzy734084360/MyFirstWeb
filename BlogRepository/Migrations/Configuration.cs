@@ -10,7 +10,7 @@ namespace BlogRepository.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;//自动升迁
+            AutomaticMigrationDataLossAllowed = false;//自动升迁
         }
 
         protected override void Seed(BlogContext context)

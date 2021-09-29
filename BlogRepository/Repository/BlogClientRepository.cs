@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace BlogRepository.Repository
 {
     /// <summary>
-    /// 博客Client仓库
+    /// 博客Client仓储
     /// </summary>
     public class BlogClientRepository : IBlogClientRepository<BlogClient>
     {

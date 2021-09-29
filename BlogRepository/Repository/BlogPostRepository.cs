@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace BlogRepository.Repository
 {
     /// <summary>
-    /// 博客文章仓库
+    /// 博客文章仓储
     /// </summary>
     public class BlogPostRepository
     {
